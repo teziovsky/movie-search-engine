@@ -1,7 +1,7 @@
 <template>
     <footer class="copyright">
         © 2020 Copyright:
-        <a href="https://mdbootstrap.com/">MDBootstrap.com</a>
+        <a href="https://linkedin.com/in/jakubsoboczynski/">Jakub Soboczyński</a>
     </footer>
 </template>
 
