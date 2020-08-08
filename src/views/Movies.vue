@@ -79,16 +79,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.img-height {
-    height: auto;
-    width: inherit;
-}
-
-.card {
-    width: 300px;
-    margin: 10px;
-}
-
 .select {
     display: flex;
     flex: column;
