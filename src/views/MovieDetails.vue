@@ -55,9 +55,7 @@ export default {
     name: "MovieDetails",
     computed: {
         movie() {
-            return this.$store.getters.findMovieID(
-                Number(this.$route.params.id)
-            );
+            return this.$store.getters.selectedMovie;
         },
     },
     created() {
