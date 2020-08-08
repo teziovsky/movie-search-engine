@@ -1,9 +1,8 @@
 <template>
-    <div class="container d-flex align-items-center flex-column">
-        <h3 class="mt-5 mb-3 card-title">{{movie.title}}</h3>
-        <div class="card">
+    <div class="min-height container d-flex justify-content-center">
+        <div class="card mt-4">
             <div class="row no-gutters">
-                <div class="col-4">
+                <div class="col-4 my-auto">
                     <img
                         :src="'http://image.tmdb.org/t/p/w500/'+ movie.poster_path"
                         class="card-img img-width"
@@ -11,40 +10,48 @@
                     />
                 </div>
                 <div class="col-8">
-                    <div class="h-100 card-body d-flex flex-column justify-content-between">
+                    <div class="h-100 card-body d-flex flex-column justify-content-start">
+                        <h3 class="mb-3 card-title">{{movie.title}}</h3>
                         <div>
                             <p class="card-text m-0">
-                                <small
-                                    class="text-muted"
-                                >Genre: {{ movie.genres.map(item => item.name).join(', ') }}</small>
+                                <strong>Genre:</strong>
+                                {{ movie.genres.map(item => item.name).join(', ') }}
                             </p>
-                            <p class="card-text">
-                                <small
-                                    class="text-muted"
-                                >Production countries: {{ movie.production_countries.map(item => item.name).join(', ')}}</small>
+                            <p class="card-text m-0">
+                                <strong>Prod. countries:</strong>
+                                {{ movie.production_countries.map(item => item.name).join(', ')}}
                             </p>
-                            <p class="card-text">Description: {{movie.overview}}</p>
-                        </div>
-                        <div class="d-flex justify-content-between">
-                            <p class="card-text">
-                                <small
-                                    class="text-muted"
-                                >Popularity: {{movie.popularity}} | Votes: {{movie.vote_count}} | Vote Average: {{movie.vote_average}}</small>
+                            <p class="card-text m-0">
+                                <strong>Popularity:</strong>
+                                {{movie.popularity}}
                             </p>
-
-                            <p class="card-text">
-                                <small class="text-muted">
-                                    <a
-                                        :href="'https://www.themoviedb.org/movie/' + movie.id"
-                                        target="_blank"
-                                        rel="noopener noreferrer"
-                                        style="width: 100px; height: auto"
-                                    >IMDBLink</a>
-                                </small>
+                            <p class="card-text m-0">
+                                <strong>Votes:</strong>
+                                {{movie.vote_count}}
+                            </p>
+                            <p class="card-text m-0">
+                                <strong>Vote Average:</strong>
+                                {{movie.vote_average}}
+                            </p>
+                            <p class="card-text mt-2">
+                                <a
+                                    :href="'https://www.themoviedb.org/movie/' + movie.id"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                >
+                                    <strong>IMDB Link</strong>
+                                </a>
                             </p>
                         </div>
                     </div>
                 </div>
+            </div>
+            <div class="row no-gutters">
+                <div class="col-12"></div>
+                <p class="card-text text-justify p-3">
+                    <strong>Description:</strong>
+                    {{movie.overview}}
+                </p>
             </div>
         </div>
     </div>
@@ -65,16 +72,37 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.min-height {
+    min-height: calc(100vh - 132px);
+}
+
 a {
     color: #6c757d;
+    border-bottom: 1px solid transparent;
+    transition: border-bottom 0.3s ease;
 
     &:hover {
         text-decoration: none;
-        text-shadow: 0.5px 0px 0px rgba($color: #000000, $alpha: 0.5);
+        border-bottom: 1px solid #6c757d;
     }
 }
 
 .img-width {
-    max-width: 300px;
+    max-width: 250px;
+}
+
+.card {
+    width: 60%;
+    height: 100%;
+    display: block;
+}
+
+@media only screen and (max-width: 768px) {
+    .img-width {
+        width: inherit;
+    }
+    .card {
+        width: 100vw;
+    }
 }
 </style>
