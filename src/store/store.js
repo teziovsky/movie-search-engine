@@ -14,7 +14,9 @@ export default new Vuex.Store({
     selectedMovie: [],
     searchResults: [],
     sortBy: "popularity.desc",
-    lastPageNr: null
+    lastPageMovies: null,
+    lastPageSearch: null,
+    searchQuery: ""
   },
   getters: {
     selectedMovie(state) {
@@ -28,8 +30,11 @@ export default new Vuex.Store({
     FETCH_NEXTPAGE(state, payload) {
       state.allMovies.push(...payload);
     },
-    SET_LASTPAGENR(state, payload) {
-      state.lastPageNr = payload;
+    SET_LASTPAGEMOVIES(state, payload) {
+      state.lastPageMovies = payload;
+    },
+    SET_LASTPAGESEARCH(state, payload) {
+      state.lastPageSearch = payload;
     },
     SET_SORTBY(state, payload) {
       state.sortBy = payload;
@@ -49,6 +54,9 @@ export default new Vuex.Store({
     FETCH_SEARCHRESULTS(state, payload) {
       state.searchResults = payload;
     },
+    FETCH_NEXTSEARCHPAGE(state, payload) {
+      state.searchResults.push(...payload);
+    },
     FETCH_SEARCHQUERY(state, payload) {
       state.searchQuery = payload;
     }
@@ -60,7 +68,7 @@ export default new Vuex.Store({
           `https://api.themoviedb.org/3/discover/movie?api_key=${ApiKey}&language=en-US&sort_by=${state.sortBy}&include_adult=false&include_video=false&page=${page}`
         )
         .then(response => {
-          commit("SET_LASTPAGENR", response.data.total_pages);
+          commit("SET_LASTPAGEMOVIES", response.data.total_pages);
           commit("FETCH_ALLMOVIES", response.data.results);
         });
     },
@@ -115,16 +123,26 @@ export default new Vuex.Store({
     fetchSearchResults({ commit }, data) {
       if (data.length == 0) {
         commit("FETCH_SEARCHRESULTS", "");
+        commit("SET_LASTPAGESEARCH", null);
       } else {
         axios
           .get(
-            `https://api.themoviedb.org/3/search/movie?api_key=${ApiKey}&language=en-US&query=${data}&page=1&include_adult=true`
+            `https://api.themoviedb.org/3/search/movie?api_key=${ApiKey}&language=en-US&query=${data}&page=1&include_adult=false`
           )
           .then(response => {
-            commit("FETCH_SEARCHRESULTS", response.data);
-            console.log(response.data.results);
+            commit("SET_LASTPAGESEARCH", response.data.total_pages);
+            commit("FETCH_SEARCHRESULTS", response.data.results);
           });
       }
+    },
+    fetchNextSearchPage({ commit, state }, page) {
+      axios
+        .get(
+          `https://api.themoviedb.org/3/search/movie?api_key=${ApiKey}&language=en-US&query=${state.searchQuery}&page=${page}&include_adult=false`
+        )
+        .then(response => {
+          commit("FETCH_NEXTSEARCHPAGE", response.data.results);
+        });
     }
   }
 });
