@@ -1,9 +1,9 @@
 <template>
-    <div>
+    <div class="min-height">
         <div class="jumbotron m-0 p-4 text-center">
             <h1 class="display-4">List of movies</h1>
         </div>
-        <div class="select">
+        <div class="select my-3">
             <label for="select">Sort by:</label>
             <select id="select" class="custom-select" v-model="sortBy">
                 <option value="popularity.desc" selected>Popularity ↓</option>
@@ -12,7 +12,7 @@
                 <option value="original_title.asc">Original title ↑</option>
             </select>
         </div>
-        <div class="d-flex flex-wrap justify-content-center">
+        <div class="min-height-content d-flex flex-wrap justify-content-center">
             <MovieTile v-for="movie in showMovies" :movie="movie" :key="movie.id" />
         </div>
         <Pagination :page="page" :lastPage="lastPage" :prevPage="prevPage" :nextPage="nextPage" />
@@ -29,7 +29,6 @@ export default {
         return {
             page: 1,
             perPage: 20,
-            loading: true,
         };
     },
     computed: {
@@ -40,7 +39,7 @@ export default {
             return this.allMovies.slice(start, end);
         },
         lastPage() {
-            return this.$store.state.lastPageNr;
+            return this.$store.state.lastPageMovies;
         },
         sortBy: {
             get() {
@@ -79,13 +78,19 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.min-height {
+    min-height: calc(100vh - 132px);
+
+    &-content {
+        min-height: calc(100vh - 387px);
+    }
+}
+
 .select {
     display: flex;
     flex: column;
     align-items: baseline;
     justify-content: center;
-    margin-top: 1em;
-    margin-bottom: 5px;
 }
 
 .custom-select {

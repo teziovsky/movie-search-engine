@@ -25,8 +25,7 @@ html {
     filter: invert(100%);
 }
 
-img,
-button {
+img {
     filter: invert(100%);
 }
 
