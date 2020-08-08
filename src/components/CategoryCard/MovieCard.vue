@@ -6,8 +6,9 @@
     >
         <img
             :src="'http://image.tmdb.org/t/p/w500/'+ movie.poster_path"
+            onerror="this.onerror=null; this.src=`../../assets/no-img.jpg`"
             class="card-img-top"
-            :alt="movie.title + ' picture'"
+            :alt="movie.title + ' poster picture'"
         />
         <div class="card-body d-flex align-items-center justify-content-center py-1 px-1">
             <p class="title small">{{movie.title}}</p>
