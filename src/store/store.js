@@ -13,25 +13,26 @@ export default new Vuex.Store({
     topRated: [],
     selectedMovie: [],
     searchResults: [],
-    searchQuery: ""
+    sortBy: "popularity.desc",
+    lastPageNr: null
   },
   getters: {
-    findMovieID(state) {
-      return data => {
-        let selected = state.selectedMovie.id === data;
-        let playing = state.nowPlaying.filter(movie => movie.id === data);
-        let popular = state.mostPopular.filter(movie => movie.id === data);
-        let rated = state.topRated.filter(movie => movie.id === data);
-        if (selected.length != 0) return state.selectedMovie;
-        else if (playing.length != 0) return playing[0];
-        else if (popular.length != 0) return popular[0];
-        else if (rated.length != 0) return rated[0];
-      };
+    selectedMovie(state) {
+      return state.selectedMovie;
     }
   },
   mutations: {
     FETCH_ALLMOVIES(state, payload) {
       state.allMovies = payload;
+    },
+    FETCH_NEXTPAGE(state, payload) {
+      state.allMovies.push(...payload);
+    },
+    SET_LASTPAGENR(state, payload) {
+      state.lastPageNr = payload;
+    },
+    SET_SORTBY(state, payload) {
+      state.sortBy = payload;
     },
     FETCH_NOWPLAYING(state, payload) {
       state.nowPlaying = payload;
@@ -53,13 +54,23 @@ export default new Vuex.Store({
     }
   },
   actions: {
-    fetchAllMovies({ commit }) {
+    fetchAllMovies({ commit, state }, page) {
       axios
         .get(
-          `https://api.themoviedb.org/3/movie/now_playing?api_key=${ApiKey}&language=en-US&page=1`
+          `https://api.themoviedb.org/3/discover/movie?api_key=${ApiKey}&language=en-US&sort_by=${state.sortBy}&include_adult=false&include_video=false&page=${page}`
         )
         .then(response => {
-          commit("FETCH_NOWPLAYING", response.data.results);
+          commit("SET_LASTPAGENR", response.data.total_pages);
+          commit("FETCH_ALLMOVIES", response.data.results);
+        });
+    },
+    fetchNextPage({ commit, state }, page) {
+      axios
+        .get(
+          `https://api.themoviedb.org/3/discover/movie?api_key=${ApiKey}&language=en-US&sort_by=${state.sortBy}&include_adult=false&include_video=false&page=${page}`
+        )
+        .then(response => {
+          commit("FETCH_NEXTPAGE", response.data.results);
         });
     },
     fetchNowPlaying({ commit }) {
@@ -70,7 +81,7 @@ export default new Vuex.Store({
         .then(response => {
           commit(
             "FETCH_NOWPLAYING",
-            response.data.results.sort((a, b) => b.popularity - a.popularity).slice(0, 10)
+            response.data.results.sort((a, b) => b.popularity - a.popularity).slice(0, 9)
           );
         });
     },
@@ -80,7 +91,7 @@ export default new Vuex.Store({
         .then(response => {
           commit(
             "FETCH_MOSTPOPULAR",
-            response.data.results.sort((a, b) => b.popularity - a.popularity).slice(0, 10)
+            response.data.results.sort((a, b) => b.popularity - a.popularity).slice(0, 9)
           );
         });
     },
@@ -90,7 +101,7 @@ export default new Vuex.Store({
         .then(response => {
           commit(
             "FETCH_TOPRATED",
-            response.data.results.sort((a, b) => b.vote_average - a.vote_average).slice(0, 10)
+            response.data.results.sort((a, b) => b.vote_average - a.vote_average).slice(0, 9)
           );
         });
     },
@@ -111,7 +122,7 @@ export default new Vuex.Store({
           )
           .then(response => {
             commit("FETCH_SEARCHRESULTS", response.data);
-            //   console.log(response);
+            console.log(response.data.results);
           });
       }
     }
