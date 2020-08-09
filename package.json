@@ -1,6 +1,17 @@
 {
   "name": "movie-search-engine",
   "version": "0.1.0",
+  "description": "The movie search engine with The Movie DB API. Created for the needs of recruitment to Junior Frontend Developer.",
+  "author": "Jakub Soboczyński",
+  "homepage": "https://github.com/teziovsky/movie-search-engine",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/teziovsky/movie-search-engine.git"
+  },
+  "engines": {
+    "npm": ">=6.13.4",
+    "node": ">=12.16.1",
+  },
   "private": true,
   "scripts": {
     "serve": "vue-cli-service serve",
