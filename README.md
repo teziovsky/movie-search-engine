@@ -42,7 +42,7 @@ npm install
 ## Usage
 
 ```sh
-cd .\movie-search-engine\
+cd movie-search-engine
 npm run serve
 ```
 
