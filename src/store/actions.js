@@ -1,3 +1,6 @@
+import axios from 'axios';
+import { ApiKey } from '../settings';
+
 export default {
   fetchAllMovies({ commit, state }, page) {
     axios
@@ -56,7 +59,7 @@ export default {
       });
   },
   fetchSearchResults({ commit }, data) {
-    if (data.length == 0) {
+    if (data.length === 0) {
       commit('FETCH_SEARCHRESULTS', '');
       commit('SET_LASTPAGESEARCH', null);
     } else {

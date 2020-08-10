@@ -10,6 +10,10 @@
                 <option value="popularity.asc">Popularity ↑</option>
                 <option value="original_title.desc">Original title ↓</option>
                 <option value="original_title.asc">Original title ↑</option>
+                <option value="release_date.desc">Release date ↓</option>
+                <option value="release_date.asc">Release date ↑</option>
+                <option value="vote_count.desc">Vote count ↓</option>
+                <option value="vote_count.asc">Vote count ↑</option>
             </select>
         </div>
         <div class="min-height-content d-flex flex-wrap justify-content-center">
@@ -21,8 +25,8 @@
 
 <script>
 import { mapState } from 'vuex';
-import MovieTile from '../components/MovieTile';
-import Pagination from '../components/Pagination';
+import MovieTile from '../components/MovieTile.vue';
+import Pagination from '../components/Pagination.vue';
 
 export default {
   name: 'Movies',
@@ -53,12 +57,12 @@ export default {
   },
   methods: {
     prevPage() {
-      this.page--;
+      this.page -= 1;
       window.scrollTo({ top: 0, behavior: 'smooth' });
     },
     nextPage() {
       window.scrollTo({ top: 0, behavior: 'smooth' });
-      this.page++;
+      this.page += 1;
       this.$store.dispatch('fetchNextPage', this.page, this.sortBy);
     },
   },
