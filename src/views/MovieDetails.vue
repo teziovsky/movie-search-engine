@@ -59,15 +59,15 @@
 
 <script>
 export default {
-    name: "MovieDetails",
-    computed: {
-        movie() {
-            return this.$store.getters.selectedMovie;
-        },
+  name: 'MovieDetails',
+  computed: {
+    movie() {
+      return this.$store.getters.selectedMovie;
     },
-    created() {
-        this.$store.dispatch("fetchSelectedMovie", this.$route.params.id);
-    },
+  },
+  created() {
+    this.$store.dispatch('fetchSelectedMovie', this.$route.params.id);
+  },
 };
 </script>
 

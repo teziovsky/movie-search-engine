@@ -16,8 +16,8 @@
 </template>
 <script>
 export default {
-    props: ["page", "lastPage", "prevPage", "nextPage"],
-    name: "Pagination",
+  props: ['page', 'lastPage', 'prevPage', 'nextPage'],
+  name: 'Pagination',
 };
 </script>
 <style lang="scss" scoped>

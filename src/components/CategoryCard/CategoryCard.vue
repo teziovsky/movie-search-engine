@@ -8,18 +8,18 @@
 </template>
 
 <script>
-import MovieCard from "./MovieCard";
+import MovieCard from './MovieCard';
 
 export default {
-    props: {
-        title: {
-            type: String,
-        },
+  props: {
+    title: {
+      type: String,
     },
-    name: "CategoryCard",
-    components: {
-        MovieCard,
-    },
+  },
+  name: 'CategoryCard',
+  components: {
+    MovieCard,
+  },
 };
 </script>
 

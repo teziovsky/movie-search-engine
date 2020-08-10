@@ -20,60 +20,61 @@
 </template>
 
 <script>
-import { mapState } from "vuex";
-import MovieTile from "../components/MovieTile";
-import Pagination from "../components/Pagination";
+import { mapState } from 'vuex';
+import MovieTile from '../components/MovieTile';
+import Pagination from '../components/Pagination';
+
 export default {
-    name: "Movies",
-    data() {
-        return {
-            page: 1,
-            perPage: 20,
-        };
+  name: 'Movies',
+  data() {
+    return {
+      page: 1,
+      perPage: 20,
+    };
+  },
+  computed: {
+    ...mapState(['allMovies']),
+    showMovies() {
+      const start = (this.page - 1) * this.perPage;
+      const end = start + this.perPage;
+      return this.allMovies.slice(start, end);
     },
-    computed: {
-        ...mapState(["allMovies"]),
-        showMovies() {
-            let start = (this.page - 1) * this.perPage;
-            let end = start + this.perPage;
-            return this.allMovies.slice(start, end);
-        },
-        lastPage() {
-            return this.$store.state.lastPageMovies;
-        },
-        sortBy: {
-            get() {
-                return this.$store.state.sortBy;
-            },
-            set(value) {
-                this.$store.commit("SET_SORTBY", value);
-            },
-        },
+    lastPage() {
+      return this.$store.state.lastPageMovies;
     },
-    methods: {
-        prevPage() {
-            this.page--;
-            window.scrollTo({ top: 0, behavior: "smooth" });
-        },
-        nextPage() {
-            window.scrollTo({ top: 0, behavior: "smooth" });
-            this.page++;
-            this.$store.dispatch("fetchNextPage", this.page, this.sortBy);
-        },
+    sortBy: {
+      get() {
+        return this.$store.state.sortBy;
+      },
+      set(value) {
+        this.$store.commit('SET_SORTBY', value);
+      },
     },
-    created() {
-        this.$store.dispatch("fetchAllMovies", this.page, this.sortBy);
+  },
+  methods: {
+    prevPage() {
+      this.page--;
+      window.scrollTo({ top: 0, behavior: 'smooth' });
     },
-    watch: {
-        sortBy() {
-            this.$store.dispatch("fetchAllMovies", this.page, this.sortBy);
-            this.page = 1;
-        },
+    nextPage() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      this.page++;
+      this.$store.dispatch('fetchNextPage', this.page, this.sortBy);
     },
-    components: {
-        MovieTile,
-        Pagination,
+  },
+  created() {
+    this.$store.dispatch('fetchAllMovies', this.page, this.sortBy);
+  },
+  watch: {
+    sortBy() {
+      this.$store.dispatch('fetchAllMovies', this.page, this.sortBy);
+      this.page = 1;
     },
+  },
+  components: {
+    MovieTile,
+    Pagination,
+  },
 };
 </script>
 

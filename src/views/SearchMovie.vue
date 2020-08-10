@@ -25,56 +25,56 @@
 </template>
 
 <script>
-import { mapState } from "vuex";
-import MovieTile from "../components/MovieTile";
-import Pagination from "../components/Pagination";
+import { mapState } from 'vuex';
+import MovieTile from '../components/MovieTile.vue';
+import Pagination from '../components/Pagination.vue';
 
 export default {
-    name: "SearchMovie",
-    data() {
-        return {
-            page: 1,
-            perPage: 20,
-        };
+  name: 'SearchMovie',
+  data() {
+    return {
+      page: 1,
+      perPage: 20,
+    };
+  },
+  computed: {
+    ...mapState(['searchResults']),
+    showMovies() {
+      const start = (this.page - 1) * this.perPage;
+      const end = start + this.perPage;
+      return this.searchResults.slice(start, end);
     },
-    computed: {
-        ...mapState(["searchResults"]),
-        showMovies() {
-            let start = (this.page - 1) * this.perPage;
-            let end = start + this.perPage;
-            return this.searchResults.slice(start, end);
-        },
-        message: {
-            get() {
-                return this.$store.state.searchQuery;
-            },
-            set(value) {
-                this.$store.commit("FETCH_SEARCHQUERY", value);
-            },
-        },
-        lastPage() {
-            return this.$store.state.lastPageSearch;
-        },
+    message: {
+      get() {
+        return this.$store.state.searchQuery;
+      },
+      set(value) {
+        this.$store.commit('FETCH_SEARCHQUERY', value);
+      },
     },
-    methods: {
-        search(e) {
-            this.$store.dispatch("fetchSearchResults", this.message);
-            this.page = 1;
-        },
-        prevPage() {
-            this.page--;
-            window.scrollTo({ top: 0, behavior: "smooth" });
-        },
-        nextPage() {
-            window.scrollTo({ top: 0, behavior: "smooth" });
-            this.page++;
-            this.$store.dispatch("fetchNextSearchPage", this.page);
-        },
+    lastPage() {
+      return this.$store.state.lastPageSearch;
     },
-    components: {
-        MovieTile,
-        Pagination,
+  },
+  methods: {
+    search() {
+      this.$store.dispatch('fetchSearchResults', this.message);
+      this.page = 1;
     },
+    prevPage() {
+      this.page -= 1;
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    },
+    nextPage() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      this.page += 1;
+      this.$store.dispatch('fetchNextSearchPage', this.page);
+    },
+  },
+  components: {
+    MovieTile,
+    Pagination,
+  },
 };
 </script>
 

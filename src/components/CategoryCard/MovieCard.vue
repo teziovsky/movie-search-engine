@@ -18,8 +18,8 @@
 
 <script>
 export default {
-    props: ["movie"],
-    name: "MovieCard",
+  props: ['movie'],
+  name: 'MovieCard',
 };
 </script>
 

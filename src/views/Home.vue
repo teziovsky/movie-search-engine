@@ -18,27 +18,27 @@
 </template>
 
 <script>
-import { mapState } from "vuex";
-import CategoryCard from "../components/CategoryCard/CategoryCard";
+import { mapState } from 'vuex';
+import CategoryCard from '../components/CategoryCard/CategoryCard';
 
 export default {
-    name: "Home",
-    data() {
-        return {
-            titles: ["Now Playing", "Most Popular", "Top Rated"],
-        };
-    },
-    computed: {
-        ...mapState(["nowPlaying", "mostPopular", "topRated"]),
-    },
-    mounted() {
-        this.$store.dispatch("fetchNowPlaying");
-        this.$store.dispatch("fetchMostPopular");
-        this.$store.dispatch("fetchTopRated");
-    },
-    components: {
-        CategoryCard,
-    },
+  name: 'Home',
+  data() {
+    return {
+      titles: ['Now Playing', 'Most Popular', 'Top Rated'],
+    };
+  },
+  computed: {
+    ...mapState(['nowPlaying', 'mostPopular', 'topRated']),
+  },
+  mounted() {
+    this.$store.dispatch('fetchNowPlaying');
+    this.$store.dispatch('fetchMostPopular');
+    this.$store.dispatch('fetchTopRated');
+  },
+  components: {
+    CategoryCard,
+  },
 };
 </script>
 

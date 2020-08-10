@@ -29,18 +29,18 @@
 </template>
 <script>
 export default {
-    props: ["movie"],
-    name: "MovieTile",
-    data() {
-        return {
-            defaultImage: require("@/assets/no-img.jpg"),
-        };
+  props: ['movie'],
+  name: 'MovieTile',
+  data() {
+    return {
+      defaultImage: require('@/assets/no-img.jpg'),
+    };
+  },
+  methods: {
+    defaultImg(e) {
+      e.target.src = this.defaultImage;
     },
-    methods: {
-        defaultImg(e) {
-            e.target.src = this.defaultImage;
-        },
-    },
+  },
 };
 </script>
 <style lang="scss" scoped>
