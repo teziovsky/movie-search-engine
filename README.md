@@ -13,8 +13,6 @@
 
 > The movie search engine with The Movie DB API. Created for the needs of recruitment to Junior Frontend Developer.
 
-### 🏠 [Homepage](https://github.com/teziovsky/movie-search-engine)
-
 ### ✨ [Demo](https://teziovsky.github.io/movie-search-engine/)
 
 ## Prerequisites
