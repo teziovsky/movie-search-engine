@@ -11,33 +11,24 @@
         aria-label="Search"
         v-model.lazy="message"
       />
-      <button
-        class="btn btn-outline-danger my-sm-0"
-        type="submit"
-        @click.prevent="search"
-      >
+      <button class="btn btn-outline-danger my-sm-0" type="submit" @click.prevent="search">
         Search
       </button>
     </form>
     <div class="min-height-content d-flex flex-wrap justify-content-center">
       <MovieTile v-for="movie in showMovies" :movie="movie" :key="movie.id" />
     </div>
-    <Pagination
-      :page="page"
-      :lastPage="lastPage"
-      :prevPage="prevPage"
-      :nextPage="nextPage"
-    />
+    <Pagination :page="page" :lastPage="lastPage" :prevPage="prevPage" :nextPage="nextPage" />
   </div>
 </template>
 
 <script>
-import { mapState } from "vuex";
-import MovieTile from "../components/MovieTile.vue";
-import Pagination from "../components/Pagination.vue";
+import { mapState } from 'vuex';
+import MovieTile from '../components/MovieTile.vue';
+import Pagination from '../components/Pagination.vue';
 
 export default {
-  name: "SearchMovie",
+  name: 'SearchMovie',
   data() {
     return {
       page: 1,
@@ -45,7 +36,7 @@ export default {
     };
   },
   computed: {
-    ...mapState(["searchResults"]),
+    ...mapState(['searchResults']),
     showMovies() {
       const start = (this.page - 1) * this.perPage;
       const end = start + this.perPage;
@@ -56,7 +47,7 @@ export default {
         return this.$store.state.searchQuery;
       },
       set(value) {
-        this.$store.commit("FETCH_SEARCHQUERY", value);
+        this.$store.commit('FETCH_SEARCHQUERY', value);
       },
     },
     lastPage() {
@@ -65,17 +56,17 @@ export default {
   },
   methods: {
     search() {
-      this.$store.dispatch("fetchSearchResults", this.message);
+      this.$store.dispatch('fetchSearchResults', this.message);
       this.page = 1;
     },
     prevPage() {
       this.page -= 1;
-      window.scrollTo({ top: 0, behavior: "smooth" });
+      window.scrollTo({ top: 0, behavior: 'smooth' });
     },
     nextPage() {
-      window.scrollTo({ top: 0, behavior: "smooth" });
+      window.scrollTo({ top: 0, behavior: 'smooth' });
       this.page += 1;
-      this.$store.dispatch("fetchNextSearchPage", this.page);
+      this.$store.dispatch('fetchNextSearchPage', this.page);
     },
   },
   components: {

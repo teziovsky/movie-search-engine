@@ -15,13 +15,11 @@
             <div>
               <p class="card-text m-0">
                 <strong>Genre:</strong>
-                {{ movie.genres.map((item) => item.name).join(", ") }}
+                {{ movie.genres.map((item) => item.name).join(', ') }}
               </p>
               <p class="card-text m-0">
                 <strong>Prod. countries:</strong>
-                {{
-                  movie.production_countries.map((item) => item.name).join(", ")
-                }}
+                {{ movie.production_countries.map((item) => item.name).join(', ') }}
               </p>
               <p class="card-text m-0">
                 <strong>Popularity:</strong>
@@ -61,14 +59,14 @@
 
 <script>
 export default {
-  name: "MovieDetails",
+  name: 'MovieDetails',
   computed: {
     movie() {
       return this.$store.getters.selectedMovie;
     },
   },
   created() {
-    this.$store.dispatch("fetchSelectedMovie", this.$route.params.id);
+    this.$store.dispatch('fetchSelectedMovie', this.$route.params.id);
   },
 };
 </script>

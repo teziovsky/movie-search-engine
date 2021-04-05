@@ -1,23 +1,23 @@
 <template>
-    <div id="app">
-        <Navbar />
-        <transition name="fade" mode="out-in" appear>
-            <router-view />
-        </transition>
-        <Footer />
-    </div>
+  <div id="app">
+    <Navbar />
+    <transition name="fade" mode="out-in" appear>
+      <router-view />
+    </transition>
+    <Footer />
+  </div>
 </template>
 
 <script>
-import Navbar from "./components/Navbar";
-import Footer from "./components/Footer";
+import Navbar from './components/Navbar.vue';
+import Footer from './components/Footer.vue';
 
 export default {
-    name: "App",
-    components: {
-        Navbar,
-        Footer,
-    },
+  name: 'App',
+  components: {
+    Navbar,
+    Footer,
+  },
 };
 </script>
 
@@ -32,12 +32,12 @@ export default {
 
 .fade-enter-active,
 .fade-leave-active {
-    transition: opacity 0.25s ease-in-out;
-    opacity: 0;
+  transition: opacity 0.25s ease-in-out;
+  opacity: 0;
 }
 
 .fade-enter,
 .fade-leave-active {
-    opacity: 0;
+  opacity: 0;
 }
 </style>

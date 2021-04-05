@@ -19,22 +19,17 @@
     <div class="min-height-content d-flex flex-wrap justify-content-center">
       <MovieTile v-for="movie in showMovies" :movie="movie" :key="movie.id" />
     </div>
-    <Pagination
-      :page="page"
-      :lastPage="lastPage"
-      :prevPage="prevPage"
-      :nextPage="nextPage"
-    />
+    <Pagination :page="page" :lastPage="lastPage" :prevPage="prevPage" :nextPage="nextPage" />
   </div>
 </template>
 
 <script>
-import { mapState } from "vuex";
-import MovieTile from "../components/MovieTile.vue";
-import Pagination from "../components/Pagination.vue";
+import { mapState } from 'vuex';
+import MovieTile from '../components/MovieTile.vue';
+import Pagination from '../components/Pagination.vue';
 
 export default {
-  name: "Movies",
+  name: 'Movies',
   data() {
     return {
       page: 1,
@@ -42,7 +37,7 @@ export default {
     };
   },
   computed: {
-    ...mapState(["allMovies"]),
+    ...mapState(['allMovies']),
     showMovies() {
       const start = (this.page - 1) * this.perPage;
       const end = start + this.perPage;
@@ -56,27 +51,27 @@ export default {
         return this.$store.state.sortBy;
       },
       set(value) {
-        this.$store.commit("SET_SORTBY", value);
+        this.$store.commit('SET_SORTBY', value);
       },
     },
   },
   methods: {
     prevPage() {
       this.page -= 1;
-      window.scrollTo({ top: 0, behavior: "smooth" });
+      window.scrollTo({ top: 0, behavior: 'smooth' });
     },
     nextPage() {
-      window.scrollTo({ top: 0, behavior: "smooth" });
+      window.scrollTo({ top: 0, behavior: 'smooth' });
       this.page += 1;
-      this.$store.dispatch("fetchNextPage", this.page, this.sortBy);
+      this.$store.dispatch('fetchNextPage', this.page, this.sortBy);
     },
   },
   created() {
-    this.$store.dispatch("fetchAllMovies", this.page, this.sortBy);
+    this.$store.dispatch('fetchAllMovies', this.page, this.sortBy);
   },
   watch: {
     sortBy() {
-      this.$store.dispatch("fetchAllMovies", this.page, this.sortBy);
+      this.$store.dispatch('fetchAllMovies', this.page, this.sortBy);
       this.page = 1;
     },
   },

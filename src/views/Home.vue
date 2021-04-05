@@ -3,8 +3,8 @@
     <div class="jumbotron m-0 p-4 text-center">
       <h1 class="display-4">Movies search!</h1>
       <p class="lead">
-        This is a simple website to search movies from The movies DB API.
-        Created for the needs of recruitment to Junior Frontend Developer.
+        This is a simple website to search movies from The movies DB API. Created for the needs of
+        recruitment to Junior Frontend Developer.
       </p>
     </div>
     <div class="min-height-content">
@@ -27,23 +27,23 @@
 </template>
 
 <script>
-import { mapState } from "vuex";
-import CategoryCard from "../components/CategoryCard/CategoryCard";
+import { mapState } from 'vuex';
+import CategoryCard from '../components/CategoryCard/CategoryCard.vue';
 
 export default {
-  name: "Home",
+  name: 'Home',
   data() {
     return {
-      titles: ["Now Playing", "Most Popular", "Top Rated"],
+      titles: ['Now Playing', 'Most Popular', 'Top Rated'],
     };
   },
   computed: {
-    ...mapState(["nowPlaying", "mostPopular", "topRated"]),
+    ...mapState(['nowPlaying', 'mostPopular', 'topRated']),
   },
   mounted() {
-    this.$store.dispatch("fetchNowPlaying");
-    this.$store.dispatch("fetchMostPopular");
-    this.$store.dispatch("fetchTopRated");
+    this.$store.dispatch('fetchNowPlaying');
+    this.$store.dispatch('fetchMostPopular');
+    this.$store.dispatch('fetchTopRated');
   },
   components: {
     CategoryCard,
