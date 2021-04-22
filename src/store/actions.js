@@ -1,8 +1,11 @@
 import axios from 'axios';
-import { ApiKey } from '../settings';
+import { ApiKey } from '@/settings';
 
 export default {
-  fetchAllMovies({ commit, state }, page) {
+  fetchAllMovies({
+    commit,
+    state,
+  }, page) {
     axios
       .get(
         `https://api.themoviedb.org/3/discover/movie?api_key=${ApiKey}&language=en-US&sort_by=${state.sortBy}&include_adult=false&include_video=false&page=${page}`,
@@ -12,7 +15,10 @@ export default {
         commit('FETCH_ALLMOVIES', response.data.results);
       });
   },
-  fetchNextPage({ commit, state }, page) {
+  fetchNextPage({
+    commit,
+    state,
+  }, page) {
     axios
       .get(
         `https://api.themoviedb.org/3/discover/movie?api_key=${ApiKey}&language=en-US&sort_by=${state.sortBy}&include_adult=false&include_video=false&page=${page}`,
@@ -27,7 +33,8 @@ export default {
       .then((response) => {
         commit(
           'FETCH_NOWPLAYING',
-          response.data.results.sort((a, b) => b.popularity - a.popularity).slice(0, 9),
+          response.data.results.sort((a, b) => b.popularity - a.popularity)
+            .slice(0, 9),
         );
       });
   },
@@ -37,7 +44,8 @@ export default {
       .then((response) => {
         commit(
           'FETCH_MOSTPOPULAR',
-          response.data.results.sort((a, b) => b.popularity - a.popularity).slice(0, 9),
+          response.data.results.sort((a, b) => b.popularity - a.popularity)
+            .slice(0, 9),
         );
       });
   },
@@ -47,7 +55,8 @@ export default {
       .then((response) => {
         commit(
           'FETCH_TOPRATED',
-          response.data.results.sort((a, b) => b.vote_average - a.vote_average).slice(0, 9),
+          response.data.results.sort((a, b) => b.vote_average - a.vote_average)
+            .slice(0, 9),
         );
       });
   },
@@ -73,7 +82,10 @@ export default {
         });
     }
   },
-  fetchNextSearchPage({ commit, state }, page) {
+  fetchNextSearchPage({
+    commit,
+    state,
+  }, page) {
     axios
       .get(
         `https://api.themoviedb.org/3/search/movie?api_key=${ApiKey}&language=en-US&query=${state.searchQuery}&page=${page}&include_adult=false`,

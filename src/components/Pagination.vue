@@ -1,13 +1,13 @@
 <template>
   <nav aria-label="Page navigation" class="mt-4">
     <ul class="pagination justify-content-center">
-      <li class="page-item" :class="page === 1 ? 'disabled' : ''">
+      <li :class="page === 1 ? 'disabled' : ''" class="page-item">
         <a class="page-link" @click="prevPage">Previous</a>
       </li>
       <li class="page-link" style="background-color: inherit">
         {{ page }} of {{ lastPage == null ? 1 : lastPage }}
       </li>
-      <li class="page-item" :class="page === lastPage || lastPage === null ? 'disabled' : ''">
+      <li :class="page === lastPage || lastPage === null ? 'disabled' : ''" class="page-item">
         <a class="page-link" @click="nextPage">Next</a>
       </li>
     </ul>

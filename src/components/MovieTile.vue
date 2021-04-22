@@ -3,16 +3,14 @@
     <div class="row no-gutters">
       <div class="col">
         <img
-          :src="'http://image.tmdb.org/t/p/w500/' + movie.poster_path"
-          @error="defaultImg"
-          class="card-img img-height"
-          :alt="movie.title + ' poster picture'"
+            :alt="movie.title + ' poster picture'"
+            :src="'http://image.tmdb.org/t/p/w500/' + movie.poster_path"
+            class="card-img img-height"
+            @error="defaultImg"
         />
       </div>
       <div class="col">
-        <div
-          class="h-100 card-body d-flex flex-column justify-content-between align-items-center p-3"
-        >
+        <div class="h-100 card-body d-flex flex-column justify-content-between align-items-center p-3">
           <h6 class="mt-1 card-title">{{ movie.title }}</h6>
           <div>
             <p class="card-text m-0">
@@ -45,27 +43,30 @@ export default {
 </script>
 <style lang="scss" scoped>
 a {
-  color: #212529;
-  text-decoration: none;
   transition: transform 0.25s ease;
+  text-decoration: none;
+  color: #212529;
 
   &:hover {
-    border: 1px solid rgba($color: #000000, $alpha: 0.4);
     transform: scale(1.1);
+    border: 1px solid rgba($color: #000000, $alpha: 0.4);
+
     & .title {
       text-shadow: 0.5px 0px 0px rgba($color: #000000, $alpha: 0.7);
     }
   }
 }
+
 .card {
   width: 300px;
   margin: 10px;
 }
+
 .img-height {
+  width: inherit;
   height: 100%;
   object-fit: cover;
   object-position: center;
-  width: inherit;
 }
 
 @media only screen and (max-width: 768px) {
