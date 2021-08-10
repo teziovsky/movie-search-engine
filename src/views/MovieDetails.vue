@@ -4,9 +4,9 @@
       <div class="row no-gutters">
         <div class="col-4 my-auto">
           <img
-            :src="'http://image.tmdb.org/t/p/w500/' + movie.poster_path"
-            class="card-img img-width"
-            alt="test-alt"
+              :src="'http://image.tmdb.org/t/p/w500/' + movie.poster_path"
+              alt="test-alt"
+              class="card-img img-width"
           />
         </div>
         <div class="col-8">
@@ -15,11 +15,11 @@
             <div>
               <p class="card-text m-0">
                 <strong>Genre:</strong>
-                {{ movie.genres.map((item) => item.name).join(', ') }}
+                {{ movie.genres | arrayJoin }}
               </p>
               <p class="card-text m-0">
                 <strong>Prod. countries:</strong>
-                {{ movie.production_countries.map((item) => item.name).join(', ') }}
+                {{ movie.production_countries | arrayJoin }}
               </p>
               <p class="card-text m-0">
                 <strong>Popularity:</strong>
@@ -35,9 +35,9 @@
               </p>
               <p class="card-text mt-2">
                 <a
-                  :href="'https://www.themoviedb.org/movie/' + movie.id"
-                  target="_blank"
-                  rel="noopener noreferrer"
+                    :href="'https://www.themoviedb.org/movie/' + movie.id"
+                    rel="noopener noreferrer"
+                    target="_blank"
                 >
                   <strong>IMDB Link</strong>
                 </a>
@@ -68,6 +68,11 @@ export default {
   created() {
     this.$store.dispatch('fetchSelectedMovie', this.$route.params.id);
   },
+  filters: {
+    arrayJoin(array) {
+      return array.map((item) => item.name).join(', ');
+    },
+  },
 };
 </script>
 
@@ -77,13 +82,13 @@ export default {
 }
 
 a {
-  color: #6c757d;
-  border-bottom: 1px solid transparent;
   transition: border-bottom 0.3s ease;
+  color: #6C757D;
+  border-bottom: 1px solid transparent;
 
   &:hover {
     text-decoration: none;
-    border-bottom: 1px solid #6c757d;
+    border-bottom: 1px solid #6C757D;
   }
 }
 
@@ -92,9 +97,9 @@ a {
 }
 
 .card {
+  display: block;
   width: 60%;
   height: 100%;
-  display: block;
 }
 
 @media only screen and (max-width: 768px) {

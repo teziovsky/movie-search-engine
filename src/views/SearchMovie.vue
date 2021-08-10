@@ -5,20 +5,20 @@
     </div>
     <form class="d-flex align-center justify-content-center my-3 mr-lg-5">
       <input
-        class="form-control mr-1 search-input"
-        type="search"
-        placeholder="Search"
-        aria-label="Search"
-        v-model.lazy="message"
+          v-model.lazy="message"
+          aria-label="Search movies"
+          class="form-control mr-1 search-input"
+          placeholder="Search"
+          type="search"
       />
       <button class="btn btn-outline-danger my-sm-0" type="submit" @click.prevent="search">
         Search
       </button>
     </form>
     <div class="min-height-content d-flex flex-wrap justify-content-center">
-      <MovieTile v-for="movie in showMovies" :movie="movie" :key="movie.id" />
+      <MovieTile v-for="movie in showMovies" :key="movie.id" :movie="movie" />
     </div>
-    <Pagination :page="page" :lastPage="lastPage" :prevPage="prevPage" :nextPage="nextPage" />
+    <Pagination :lastPage="lastPage" :nextPage="nextPage" :page="page" :prevPage="prevPage" />
   </div>
 </template>
 
@@ -61,10 +61,16 @@ export default {
     },
     prevPage() {
       this.page -= 1;
-      window.scrollTo({ top: 0, behavior: 'smooth' });
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth',
+      });
     },
     nextPage() {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth',
+      });
       this.page += 1;
       this.$store.dispatch('fetchNextSearchPage', this.page);
     },
@@ -80,6 +86,7 @@ export default {
 button {
   filter: invert(100%);
 }
+
 .min-height {
   min-height: calc(100vh - 132px);
 
@@ -87,6 +94,7 @@ button {
     min-height: calc(100vh - 387px);
   }
 }
+
 .search-input {
   width: 200px;
 }

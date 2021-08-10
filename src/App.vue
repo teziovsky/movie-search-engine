@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <Navbar />
-    <transition name="fade" mode="out-in" appear>
+    <transition appear mode="out-in" name="fade">
       <router-view />
     </transition>
     <Footer />
@@ -22,14 +22,6 @@ export default {
 </script>
 
 <style lang="scss">
-// html {
-//     filter: invert(100%);
-// }
-
-// img {
-//     filter: invert(100%);
-// }
-
 .fade-enter-active,
 .fade-leave-active {
   transition: opacity 0.25s ease-in-out;
