@@ -5,8 +5,8 @@
     </div>
     <div class="select my-3">
       <label for="select">Sort by:</label>
-      <select id="select" class="custom-select" v-model="sortBy">
-        <option value="popularity.desc" selected>Popularity ↓</option>
+      <select id="select" v-model="sortBy" class="custom-select">
+        <option selected value="popularity.desc">Popularity ↓</option>
         <option value="popularity.asc">Popularity ↑</option>
         <option value="original_title.desc">Original title ↓</option>
         <option value="original_title.asc">Original title ↑</option>
@@ -17,9 +17,9 @@
       </select>
     </div>
     <div class="min-height-content d-flex flex-wrap justify-content-center">
-      <MovieTile v-for="movie in showMovies" :movie="movie" :key="movie.id" />
+      <MovieTile v-for="movie in showMovies" :key="movie.id" :movie="movie" />
     </div>
-    <Pagination :page="page" :lastPage="lastPage" :prevPage="prevPage" :nextPage="nextPage" />
+    <Pagination :lastPage="lastPage" :nextPage="nextPage" :page="page" :prevPage="prevPage" />
   </div>
 </template>
 
@@ -58,10 +58,16 @@ export default {
   methods: {
     prevPage() {
       this.page -= 1;
-      window.scrollTo({ top: 0, behavior: 'smooth' });
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth',
+      });
     },
     nextPage() {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth',
+      });
       this.page += 1;
       this.$store.dispatch('fetchNextPage', this.page, this.sortBy);
     },
@@ -93,7 +99,6 @@ export default {
 
 .select {
   display: flex;
-  flex: column;
   align-items: baseline;
   justify-content: center;
 }
