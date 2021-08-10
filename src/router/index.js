@@ -13,17 +13,17 @@ const routes = [
   {
     path: '/movies/',
     name: 'Movies',
-    component: () => import(/* webpackChunkName: "Movies" */ '../views/Movies.vue'),
+    component: () => import(/* webpackChunkName: "Routes" */ '../views/Movies.vue'),
   },
   {
     path: '/search/',
     name: 'SearchMovie',
-    component: () => import(/* webpackChunkName: "SearchMovie" */ '../views/SearchMovie.vue'),
+    component: () => import(/* webpackChunkName: "Routes" */ '../views/SearchMovie.vue'),
   },
   {
     path: '/movie/:id',
     name: 'Movie',
-    component: () => import(/* webpackChunkName: "MovieDetails" */ '../views/MovieDetails.vue'),
+    component: () => import(/* webpackChunkName: "Routes" */ '../views/MovieDetails.vue'),
   },
 ];
 
