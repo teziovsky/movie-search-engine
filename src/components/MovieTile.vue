@@ -52,7 +52,7 @@ a {
     border: 1px solid rgba($color: #000000, $alpha: 0.4);
 
     & .title {
-      text-shadow: 0.5px 0px 0px rgba($color: #000000, $alpha: 0.7);
+      text-shadow: 0.5px 0 0 rgba($color: #000000, $alpha: 0.7);
     }
   }
 }
