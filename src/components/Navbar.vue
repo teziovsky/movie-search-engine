@@ -1,21 +1,21 @@
 <template>
   <nav class="border-b navbar navbar-expand-lg navbar-light bg-light">
     <a
-        class="navbar-brand ml-lg-5"
-        href="https://github.com/teziovsky/movie-search-engine"
-        rel="noopener noreferrer"
-        target="_blank"
+      class="navbar-brand ml-lg-5"
+      href="https://github.com/teziovsky/movie-search-engine"
+      rel="noopener noreferrer"
+      target="_blank"
     >
       Movies search
     </a>
     <button
-        aria-controls="navbarToggler"
-        aria-expanded="false"
-        aria-label="Toggle navigation"
-        class="navbar-toggler"
-        data-target="#navbarToggler"
-        data-toggle="collapse"
-        type="button"
+      aria-controls="navbarToggler"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+      class="navbar-toggler"
+      data-target="#navbarToggler"
+      data-toggle="collapse"
+      type="button"
     >
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -23,31 +23,31 @@
       <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
         <li class="nav-item">
           <router-link
-              class="nav-link"
-              data-target=".navbar-collapse.show"
-              data-toggle="collapse"
-              exact
-              to="/"
+            class="nav-link"
+            data-target=".navbar-collapse.show"
+            data-toggle="collapse"
+            exact
+            to="/"
           >
             Home
           </router-link>
         </li>
         <li class="nav-item">
           <router-link
-              class="nav-link"
-              data-target=".navbar-collapse.show"
-              data-toggle="collapse"
-              to="/movies/"
+            class="nav-link"
+            data-target=".navbar-collapse.show"
+            data-toggle="collapse"
+            to="/movies/"
           >
             Movies
           </router-link>
         </li>
         <li class="nav-item">
           <router-link
-              class="nav-link"
-              data-target=".navbar-collapse.show"
-              data-toggle="collapse"
-              to="/search"
+            class="nav-link"
+            data-target=".navbar-collapse.show"
+            data-toggle="collapse"
+            to="/search"
           >
             Search
           </router-link>

@@ -3,10 +3,10 @@
     <div class="row no-gutters">
       <div class="col">
         <img
-            :alt="movie.title + ' poster picture'"
-            :src="'http://image.tmdb.org/t/p/w500/' + movie.poster_path"
-            class="card-img img-height"
-            @error="defaultImg"
+          :alt="movie.title + ' poster picture'"
+          :src="'http://image.tmdb.org/t/p/w500/' + movie.poster_path"
+          class="card-img img-height"
+          @error="defaultImg"
         />
       </div>
       <div class="col">

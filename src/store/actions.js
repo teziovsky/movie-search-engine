@@ -3,7 +3,7 @@ import { ApiKey } from '@/settings';
 
 export default {
   fetchAllMovies({ commit, state }, page) {
-    axios.get(`https://api.themoviedb.org/3/discover/movie?api_key=${ApiKey}&language=en-US&sort_by=${state.sortBy}&include_adult=false&include_video=false&page=${page}`)
+    axios.get(`https://api.themoviedb.org/3/discover/movie?api_key=${ ApiKey }&language=en-US&sort_by=${ state.sortBy }&include_adult=false&include_video=false&page=${ page }`)
       .then((response) => {
         commit('SET_LASTPAGEMOVIES', response.data.total_pages);
         commit('FETCH_ALLMOVIES', response.data.results);
@@ -11,13 +11,13 @@ export default {
   },
   fetchNextPage({ commit, state }, page) {
     axios.get(
-      `https://api.themoviedb.org/3/discover/movie?api_key=${ApiKey}&language=en-US&sort_by=${state.sortBy}&include_adult=false&include_video=false&page=${page}`)
+      `https://api.themoviedb.org/3/discover/movie?api_key=${ ApiKey }&language=en-US&sort_by=${ state.sortBy }&include_adult=false&include_video=false&page=${ page }`)
       .then((response) => {
         commit('FETCH_NEXTPAGE', response.data.results);
       });
   },
   fetchNowPlaying({ commit }) {
-    axios.get(`https://api.themoviedb.org/3/movie/now_playing?api_key=${ApiKey}&language=en-US&page=1`)
+    axios.get(`https://api.themoviedb.org/3/movie/now_playing?api_key=${ ApiKey }&language=en-US&page=1`)
       .then((response) => {
         commit(
           'FETCH_NOWPLAYING',
@@ -27,7 +27,7 @@ export default {
       });
   },
   fetchMostPopular({ commit }) {
-    axios.get(`https://api.themoviedb.org/3/movie/popular?api_key=${ApiKey}&language=en-US&page=1`)
+    axios.get(`https://api.themoviedb.org/3/movie/popular?api_key=${ ApiKey }&language=en-US&page=1`)
       .then((response) => {
         commit(
           'FETCH_MOSTPOPULAR',
@@ -37,7 +37,7 @@ export default {
       });
   },
   fetchTopRated({ commit }) {
-    axios.get(`https://api.themoviedb.org/3/movie/top_rated?api_key=${ApiKey}&language=en-US&page=1`)
+    axios.get(`https://api.themoviedb.org/3/movie/top_rated?api_key=${ ApiKey }&language=en-US&page=1`)
       .then((response) => {
         commit(
           'FETCH_TOPRATED',
@@ -47,7 +47,7 @@ export default {
       });
   },
   fetchSelectedMovie({ commit }, data) {
-    axios.get(`https://api.themoviedb.org/3/movie/${data}?api_key=${ApiKey}&language=en-US`)
+    axios.get(`https://api.themoviedb.org/3/movie/${ data }?api_key=${ ApiKey }&language=en-US`)
       .then((response) => {
         commit('FETCH_SELECTEDMOVIE', response.data);
       });
@@ -57,7 +57,7 @@ export default {
       commit('FETCH_SEARCHRESULTS', '');
       commit('SET_LASTPAGESEARCH', null);
     } else {
-      axios.get(`https://api.themoviedb.org/3/search/movie?api_key=${ApiKey}&language=en-US&query=${data}&page=1&include_adult=false`)
+      axios.get(`https://api.themoviedb.org/3/search/movie?api_key=${ ApiKey }&language=en-US&query=${ data }&page=1&include_adult=false`)
         .then((response) => {
           commit('SET_LASTPAGESEARCH', response.data.total_pages);
           commit('FETCH_SEARCHRESULTS', response.data.results);
@@ -65,7 +65,7 @@ export default {
     }
   },
   fetchNextSearchPage({ commit, state }, page) {
-    axios.get(`https://api.themoviedb.org/3/search/movie?api_key=${ApiKey}&language=en-US&query=${state.searchQuery}&page=${page}&include_adult=false`)
+    axios.get(`https://api.themoviedb.org/3/search/movie?api_key=${ ApiKey }&language=en-US&query=${ state.searchQuery }&page=${ page }&include_adult=false`)
       .then((response) => {
         commit('FETCH_NEXTSEARCHPAGE', response.data.results);
       });

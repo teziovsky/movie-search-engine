@@ -1,10 +1,10 @@
 <template>
   <router-link :to="'/movie/' + movie.id" class="card mx-1 my-1" style="width: 110px; height: auto">
     <img
-        :alt="movie.title + ' poster picture'"
-        :src="'http://image.tmdb.org/t/p/w500/' + movie.poster_path"
-        class="card-img-top"
-        onerror="this.onerror=null; this.src=`../../assets/no-img.jpg`"
+      :alt="movie.title + ' poster picture'"
+      :src="'http://image.tmdb.org/t/p/w500/' + movie.poster_path"
+      class="card-img-top"
+      onerror="this.onerror=null; this.src=`../../assets/no-img.jpg`"
     />
     <div class="card-body d-flex align-items-center justify-content-center py-1 px-1">
       <p class="title small">{{ movie.title }}</p>
