@@ -5,11 +5,11 @@
     </div>
     <form class="d-flex align-center justify-content-center my-3 mr-lg-5">
       <input
-          v-model.lazy="message"
-          aria-label="Search movies"
-          class="form-control mr-1 search-input"
-          placeholder="Search"
-          type="search"
+        v-model.lazy="message"
+        aria-label="Search movies"
+        class="form-control mr-1 search-input"
+        placeholder="Search"
+        type="search"
       />
       <button class="btn btn-outline-danger my-sm-0" type="submit" @click.prevent="search">
         Search

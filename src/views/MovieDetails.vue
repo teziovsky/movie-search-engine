@@ -4,9 +4,9 @@
       <div class="row no-gutters">
         <div class="col-4 my-auto">
           <img
-              :src="'http://image.tmdb.org/t/p/w500/' + movie.poster_path"
-              alt="test-alt"
-              class="card-img img-width"
+            :src="'http://image.tmdb.org/t/p/w500/' + movie.poster_path"
+            alt="test-alt"
+            class="card-img img-width"
           />
         </div>
         <div class="col-8">
@@ -35,9 +35,9 @@
               </p>
               <p class="card-text mt-2">
                 <a
-                    :href="'https://www.themoviedb.org/movie/' + movie.id"
-                    rel="noopener noreferrer"
-                    target="_blank"
+                  :href="'https://www.themoviedb.org/movie/' + movie.id"
+                  rel="noopener noreferrer"
+                  target="_blank"
                 >
                   <strong>IMDB Link</strong>
                 </a>

@@ -9,9 +9,9 @@
     </div>
     <div class="min-height-content">
       <CategoryCard
-          v-for="title in titles"
-          :key="title"
-          :category="
+        v-for="title in titles"
+        :key="title"
+        :category="
           title === 'Now Playing'
             ? nowPlaying
             : title === 'Most Popular'
@@ -20,7 +20,7 @@
             ? topRated
             : null
         "
-          :title="title"
+        :title="title"
       />
     </div>
   </div>
