@@ -26,4 +26,4 @@ npm run serve
 
 ## Contact
 
-If you have any suggestions, please [send me an email here](mailto:kontakt@jakubsoboczynski.pl) 🔥
+If you have any suggestions, please [send me an email here](mailto:jakub.soboczynski@icloud.com) 🔥
