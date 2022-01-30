@@ -1,6 +1,6 @@
 # Hey it's movie-search-engine! 🤝
 
-> The movie search engine with The Movie DB API. Created for the needs of recruitment to Junior Frontend Developer.
+> A movie search engine that retrieves information from The Movie DB API. It allows you to view the details of a specific movie and sort the list according to specific criteria. Project created for the recruitment for the position of Frontend Developer.
 
 ## [Demo](https://teziovsky.github.io/movie-search-engine/)
 
