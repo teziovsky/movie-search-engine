@@ -1,29 +1,44 @@
-# Hey it's movie-search-engine! 🤝
+# Hey it's movie-search-engine! 🖖🏼
+
+![GitHub package.json version](https://img.shields.io/github/package-json/v/teziovsky/movie-search-engine) [![GitHub](https://img.shields.io/github/license/teziovsky/movie-search-engine)](https://choosealicense.com/licenses/mit/) [![Twitter Follow](https://img.shields.io/twitter/follow/teziovsky?style=social)](https://www.twitter.com/teziovsky)
 
 > A movie search engine that retrieves information from The Movie DB API. It allows you to view the details of a specific movie and sort the list according to specific criteria. Project created for the recruitment for the position of Frontend Developer.
 
-## [Demo](https://teziovsky.github.io/movie-search-engine/)
+## Demo 👀
+#### [🏠 Link to demo here!](https://teziovsky.github.io/movie-search-engine/)
 
-## Run locally
+## Get started 🏁
 
 Clone the project and go to the project directory
 
 ```bash
-git clone https://github.com/teziovsky/movie-search-engine.git && cd movie-search-engine
+  git clone git@github.com:teziovsky/movie-search-engine.git && cd movie-search-engine
 ```
 
 Install dependencies
 
 ```bash
-npm install
+  npm install
 ```
 
-Start the server
+Start the application!
 
 ```bash
-npm run serve
+  npm run serve
 ```
 
-## Contact
+## Author 🙎🏼‍
 
-If you have any suggestions, please [send me an email here](mailto:jakub.soboczynski@icloud.com) 🔥
+#### [@teziovsky](https://www.github.com/teziovsky)
+
+## Contact ☎️
+
+If you have any suggestions, please [email me here](mailto:jakub.soboczynski@icloud.com)! 🔥
+
+## License 🧾
+
+#### [MIT License](https://choosealicense.com/licenses/mit/)
+
+---
+
+README created with ❤️ by [md-generate](https://www.npmjs.com/package/md-generate)

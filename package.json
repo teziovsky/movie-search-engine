@@ -1,16 +1,25 @@
 {
   "name": "movie-search-engine",
-  "version": "0.1.0",
-  "description": "The movie search engine with The Movie DB API. Created for the needs of recruitment to Junior Frontend Developer.",
-  "author": "Jakub Soboczyński",
-  "homepage": "https://github.com/teziovsky/movie-search-engine",
+  "version": "1.0.0",
+  "description": "A movie search engine that retrieves information from The Movie DB API. It allows you to view the details of a specific movie and sort the list according to specific criteria. Project created for the recruitment for the position of Frontend Developer.",
+  "homepage": "https://teziovsky.github.io/movie-search-engine/",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/teziovsky/movie-search-engine.git"
+    "url": "git@github.com:teziovsky/movie-search-engine.git"
   },
   "engines": {
-    "npm": ">=6.13.4",
-    "node": ">=12.16.1"
+    "node": ">=v12.0.0",
+    "npm": ">=v6.0.0"
+  },
+  "bugs": {
+    "url": "https://github.com/teziovsky/movie-search-engine/issues",
+    "email": "teziovsky@gmail.com"
+  },
+  "license": "MIT License",
+  "author": {
+    "name": "Jakub Soboczyński",
+    "email": "jakub.soboczynski@icloud.com",
+    "url": "https://www.jakubsoboczynski.pl"
   },
   "private": true,
   "scripts": {

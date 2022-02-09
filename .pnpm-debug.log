@@ -1,0 +1,31 @@
+{
+  "0 debug pnpm:scope": {
+    "selected": 1
+  },
+  "1 info pnpm": {
+    "err": {
+      "name": "Error",
+      "message": "Command was killed with SIGINT (User interruption with CTRL-C): /Users/kuba/.nvm/versions/node/v14.19.0/bin/md-generate",
+      "stack": "Error: Command was killed with SIGINT (User interruption with CTRL-C): /Users/kuba/.nvm/versions/node/v14.19.0/bin/md-generate\n    at makeError (/Users/kuba/.nvm/versions/node/v14.19.0/pnpm-global/5/node_modules/.pnpm/pnpm@6.30.0/node_modules/pnpm/dist/pnpm.cjs:42493:17)\n    at handlePromise (/Users/kuba/.nvm/versions/node/v14.19.0/pnpm-global/5/node_modules/.pnpm/pnpm@6.30.0/node_modules/pnpm/dist/pnpm.cjs:43064:33)\n    at processTicksAndRejections (internal/process/task_queues.js:95:5)\n    at async /Users/kuba/.nvm/versions/node/v14.19.0/pnpm-global/5/node_modules/.pnpm/pnpm@6.30.0/node_modules/pnpm/dist/pnpm.cjs:178035:13"
+    }
+  },
+  "2 error pnpm": {
+    "shortMessage": "Command was killed with SIGINT (User interruption with CTRL-C): /Users/kuba/.nvm/versions/node/v14.19.0/bin/md-generate",
+    "command": "/Users/kuba/.nvm/versions/node/v14.19.0/bin/md-generate",
+    "escapedCommand": "\"/Users/kuba/.nvm/versions/node/v14.19.0/bin/md-generate\"",
+    "signal": "SIGINT",
+    "signalDescription": "User interruption with CTRL-C",
+    "failed": true,
+    "timedOut": false,
+    "isCanceled": false,
+    "killed": false,
+    "code": "ERR_PNPM_RECURSIVE_EXEC_FIRST_FAIL",
+    "prefix": "/Users/kuba/Develop/Frontend/movie-search-engine",
+    "err": {
+      "name": "pnpm",
+      "message": "Command was killed with SIGINT (User interruption with CTRL-C): /Users/kuba/.nvm/versions/node/v14.19.0/bin/md-generate",
+      "code": "ERR_PNPM_RECURSIVE_EXEC_FIRST_FAIL",
+      "stack": "Error: Command was killed with SIGINT (User interruption with CTRL-C): /Users/kuba/.nvm/versions/node/v14.19.0/bin/md-generate\n    at makeError (/Users/kuba/.nvm/versions/node/v14.19.0/pnpm-global/5/node_modules/.pnpm/pnpm@6.30.0/node_modules/pnpm/dist/pnpm.cjs:42493:17)\n    at handlePromise (/Users/kuba/.nvm/versions/node/v14.19.0/pnpm-global/5/node_modules/.pnpm/pnpm@6.30.0/node_modules/pnpm/dist/pnpm.cjs:43064:33)\n    at processTicksAndRejections (internal/process/task_queues.js:95:5)\n    at async /Users/kuba/.nvm/versions/node/v14.19.0/pnpm-global/5/node_modules/.pnpm/pnpm@6.30.0/node_modules/pnpm/dist/pnpm.cjs:178035:13"
+    }
+  }
+}
