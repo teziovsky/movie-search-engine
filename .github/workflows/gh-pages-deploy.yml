@@ -15,8 +15,9 @@ jobs:
           npm install
           npm run build
 
-      - name: Deploy 🚀
-        uses: JamesIves/github-pages-deploy-action@v4.2.3
+      - name: Deploy to GitHub Pages
+        if: success()
+        uses: crazy-max/ghaction-github-pages@v2
         with:
-          branch: gh-pages
-          folder: dist
+          target_branch: gh-pages
+          build_dir: dist
