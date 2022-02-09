@@ -10,12 +10,14 @@ jobs:
       - name: Checkout 🛎️
         uses: actions/checkout@v2
 
-      - name: Install and Build 🔧 # This example project is built using npm and outputs the result to the 'build' folder. Replace with the commands required to build your project, or remove this step entirely if your site is pre-built.
-        run: |
-          npm install
-          npm run build
+      - name: Generate static files 👷🏼‍
+        uses: actions/setup-node@v2
+        with:
+          node-version: '14'
+      - run: npm ci
+      - run: npm run build
 
-      - name: Deploy to GitHub Pages
+      - name: Deploy to GitHub Pages 🚀
         if: success()
         uses: crazy-max/ghaction-github-pages@v2
         with:
