@@ -17,9 +17,8 @@ jobs:
       - run: npm ci
       - run: npm run build
 
-      - name: Deploy to GitHub Pages 🚀
-        if: success()
-        uses: crazy-max/ghaction-github-pages@v2
+      - name: Deploy 🚀
+        uses: JamesIves/github-pages-deploy-action@v4.2.3
         with:
-          target_branch: gh-pages
-          build_dir: dist
+          branch: gh-pages # The branch the action should deploy to.
+          folder: dist # The folder the action should deploy.
