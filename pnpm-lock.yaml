@@ -4,8 +4,8 @@ specifiers:
   '@vue/cli-plugin-babel': ~4.4.0
   '@vue/cli-plugin-router': ~4.4.0
   '@vue/cli-service': ~4.4.0
-  axios: ^0.21.4
-  core-js: ^3.21.0
+  axios: ^0.26.1
+  core-js: ^3.21.1
   node-sass: ^4.14.1
   sass-loader: ^8.0.2
   vue: ^2.6.14
@@ -14,8 +14,8 @@ specifiers:
   vuex: ^3.6.2
 
 dependencies:
-  axios: 0.21.4
-  core-js: 3.21.0
+  axios: 0.26.1
+  core-js: 3.21.1
   vue: 2.6.14
   vue-router: 3.5.3
   vuex: 3.6.2_vue@2.6.14
@@ -1393,7 +1393,7 @@ packages:
       '@vue/babel-plugin-jsx': 1.1.1_@babel+core@7.17.2
       '@vue/babel-preset-jsx': 1.2.4_@babel+core@7.17.2
       babel-plugin-dynamic-import-node: 2.3.3
-      core-js: 3.21.0
+      core-js: 3.21.1
       core-js-compat: 3.21.0
       semver: 6.3.0
       vue: 2.6.14
@@ -2075,8 +2075,8 @@ packages:
     resolution: {integrity: sha512-xh1Rl34h6Fi1DC2WWKfxUTVqRsNnr6LsKz2+hfwDxQJWmrx8+c7ylaqBMcHfl1U1r2dsifOvKX3LQuLNZ+XSvA==}
     dev: true
 
-  /axios/0.21.4:
-    resolution: {integrity: sha512-ut5vewkiu8jjGBdqpM44XxjuCjq9LAKeHVmoVfHVzy8eHgxxq8SbAVQNovDA8mVi05kP0Ea/n/UzcSHcTJQfNg==}
+  /axios/0.26.1:
+    resolution: {integrity: sha512-fPwcX4EvnSHuInCMItEhAGnaSEXRBjtzh9fOtsE6E1G6p7vl7edEeZe11QHf18+6+9gR5PbKV/sGKNaD8YaMeA==}
     dependencies:
       follow-redirects: 1.14.8
     transitivePeerDependencies:
@@ -2957,8 +2957,8 @@ packages:
       semver: 7.0.0
     dev: true
 
-  /core-js/3.21.0:
-    resolution: {integrity: sha512-YUdI3fFu4TF/2WykQ2xzSiTQdldLB4KVuL9WeAy5XONZYt5Cun/fpQvctoKbCgvPhmzADeesTk/j2Rdx77AcKQ==}
+  /core-js/3.21.1:
+    resolution: {integrity: sha512-FRq5b/VMrWlrmCzwRrpDYNxyHP9BcAZC+xHJaqTgIE5091ZV1NTmyh0sGOg5XqpnHvR0svdy0sv1gWA1zmhxig==}
     requiresBuild: true
 
   /core-util-is/1.0.2:
