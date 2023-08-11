@@ -33,7 +33,7 @@ Start the application!
 
 ## Contact ☎️
 
-If you have any suggestions, please [email me here](mailto:teziovsky@gmail.com)! 🔥
+If you have any suggestions, please [email me here](mailto:kontakt@jakubsoboczynski.pl)! 🔥
 
 ## License 🧾
 
