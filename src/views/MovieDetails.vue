@@ -1,113 +1,91 @@
 <template>
-  <div class="min-height container d-flex justify-content-center">
-    <div class="card mt-4">
-      <div class="row no-gutters">
-        <div class="col-4 my-auto">
-          <img
-            :src="'http://image.tmdb.org/t/p/w500/' + movie.poster_path"
-            alt="test-alt"
-            class="card-img img-width"
-          />
-        </div>
-        <div class="col-8">
-          <div class="h-100 card-body d-flex flex-column justify-content-start">
-            <h3 class="mb-3 card-title">{{ movie.title }}</h3>
-            <div>
-              <p class="card-text m-0">
-                <strong>Genre:</strong>
-                {{ movie.genres | arrayJoin }}
-              </p>
-              <p class="card-text m-0">
-                <strong>Prod. countries:</strong>
-                {{ movie.production_countries | arrayJoin }}
-              </p>
-              <p class="card-text m-0">
-                <strong>Popularity:</strong>
-                {{ movie.popularity }}
-              </p>
-              <p class="card-text m-0">
-                <strong>Votes:</strong>
-                {{ movie.vote_count }}
-              </p>
-              <p class="card-text m-0">
-                <strong>Vote Average:</strong>
-                {{ movie.vote_average }}
-              </p>
-              <p class="card-text mt-2">
-                <a
-                  :href="'https://www.themoviedb.org/movie/' + movie.id"
-                  rel="noopener noreferrer"
-                  target="_blank"
-                >
-                  <strong>IMDB Link</strong>
-                </a>
-              </p>
-            </div>
+  <section class="page-shell flex items-center justify-center">
+    <article v-if="movie" class="glass-panel w-full max-w-5xl overflow-hidden">
+      <div class="grid gap-4 p-4 md:grid-cols-[280px_1fr] md:gap-6 md:p-6">
+        <img
+          :alt="`${movie.title} poster`"
+          :src="posterUrl"
+          class="h-auto w-full rounded-2xl border border-slate-200/80 object-cover md:max-h-[420px]"
+        />
+
+        <div class="flex flex-col gap-3">
+          <div>
+            <span class="chip">Movie profile</span>
+            <h2 class="mt-2 text-3xl font-bold text-slate-900">{{ movie.title }}</h2>
           </div>
+
+          <p class="text-sm text-slate-600">
+            <span class="font-bold text-slate-900">Genre:</span>
+            {{ arrayJoin(movie.genres) }}
+          </p>
+          <p class="text-sm text-slate-600">
+            <span class="font-bold text-slate-900">Production countries:</span>
+            {{ arrayJoin(movie.production_countries) }}
+          </p>
+          <p class="text-sm text-slate-600">
+            <span class="font-bold text-slate-900">Popularity:</span>
+            {{ movie.popularity }}
+          </p>
+          <p class="text-sm text-slate-600">
+            <span class="font-bold text-slate-900">Votes:</span>
+            {{ movie.vote_count }}
+          </p>
+          <p class="text-sm text-slate-600">
+            <span class="font-bold text-slate-900">Vote average:</span>
+            {{ movie.vote_average }}
+          </p>
+          <a
+            :href="`https://www.themoviedb.org/movie/${movie.id}`"
+            class="action-btn mt-2 inline-flex w-fit px-4 py-2"
+            rel="noopener noreferrer"
+            target="_blank"
+          >
+            Open on TMDB
+          </a>
         </div>
       </div>
-      <div class="row no-gutters">
-        <div class="col-12"></div>
-        <p class="card-text text-justify p-3">
-          <strong>Description:</strong>
-          {{ movie.overview }}
+
+      <div class="border-t border-slate-200/80 px-4 py-5 md:px-6">
+        <p class="text-sm leading-7 text-slate-700">
+          <span class="font-bold text-slate-900">Overview:</span>
+          {{ movie.overview || 'No overview available for this title.' }}
         </p>
       </div>
-    </div>
-  </div>
+    </article>
+
+    <div v-else class="surface-tint rounded-xl px-4 py-3 text-sm font-medium text-slate-700">Loading...</div>
+  </section>
 </template>
 
-<script>
-export default {
-  name: 'MovieDetails',
-  computed: {
-    movie() {
-      return this.$store.getters.selectedMovie;
-    },
-  },
-  created() {
-    this.$store.dispatch('fetchSelectedMovie', this.$route.params.id);
-  },
-  filters: {
-    arrayJoin(array) {
-      return array.map((item) => item.name).join(', ');
-    },
-  },
+<script setup lang="ts">
+import { storeToRefs } from 'pinia';
+import { computed, onMounted } from 'vue';
+import { useRoute } from 'vue-router';
+import noImg from '@/assets/no-img.jpg';
+import { useMoviesStore } from '@/stores/movies';
+import type { Genre, ProductionCountry } from '@/types/movie';
+
+const route = useRoute();
+const store = useMoviesStore();
+const { selectedMovie: movie } = storeToRefs(store);
+
+const posterUrl = computed(() => {
+  if (!movie.value?.poster_path) {
+    return noImg;
+  }
+
+  return `https://image.tmdb.org/t/p/w500/${movie.value.poster_path}`;
+});
+
+const arrayJoin = (array?: Genre[] | ProductionCountry[]) => {
+  if (!array || array.length === 0) {
+    return 'N/A';
+  }
+
+  return array.map((item) => item.name).join(', ');
 };
+
+onMounted(async () => {
+  await store.fetchSelectedMovie(route.params.id as string);
+});
 </script>
-
-<style lang="scss" scoped>
-.min-height {
-  min-height: calc(100vh - 132px);
-}
-
-a {
-  transition: border-bottom 0.3s ease;
-  color: #6C757D;
-  border-bottom: 1px solid transparent;
-
-  &:hover {
-    text-decoration: none;
-    border-bottom: 1px solid #6C757D;
-  }
-}
-
-.img-width {
-  max-width: 250px;
-}
-
-.card {
-  display: block;
-  width: 60%;
-  height: 100%;
-}
-
-@media only screen and (max-width: 768px) {
-  .img-width {
-    width: inherit;
-  }
-  .card {
-    width: 100vw;
-  }
-}
-</style>

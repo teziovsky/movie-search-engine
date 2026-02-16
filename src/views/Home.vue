@@ -1,62 +1,41 @@
 <template>
-  <div class="min-height">
-    <div class="jumbotron m-0 p-4 text-center">
-      <h1 class="display-4">Movies search!</h1>
-      <p class="lead">
-        This is a simple website to search movies from The movies DB API. Created for the needs of
-        recruitment to Junior Frontend Developer.
+  <section class="page-shell">
+    <div class="page-heading mb-6">
+      <span class="chip">Cinematic Explorer</span>
+      <h1 class="page-title mt-3">A glossy way to discover what to watch next</h1>
+      <p class="page-subtitle">
+        Fresh releases, audience favorites, and critically acclaimed picks pulled from TMDB in one
+        polished browsing experience.
       </p>
     </div>
-    <div class="min-height-content">
+
+    <div class="space-y-5 pb-8">
       <CategoryCard
-        v-for="title in titles"
-        :key="title"
-        :category="
-          title === 'Now Playing'
-            ? nowPlaying
-            : title === 'Most Popular'
-            ? mostPopular
-            : title === 'Top Rated'
-            ? topRated
-            : null
-        "
-        :title="title"
+        v-for="item in categories"
+        :key="item.title"
+        :category="item.movies"
+        :title="item.title"
       />
     </div>
-  </div>
+  </section>
 </template>
 
-<script>
-import { mapState } from 'vuex';
-import CategoryCard from '../components/CategoryCard/CategoryCard.vue';
+<script setup lang="ts">
+import { storeToRefs } from 'pinia';
+import { computed, onMounted } from 'vue';
+import CategoryCard from '@/components/CategoryCard/CategoryCard.vue';
+import { useMoviesStore } from '@/stores/movies';
 
-export default {
-  name: 'Home',
-  data() {
-    return {
-      titles: ['Now Playing', 'Most Popular', 'Top Rated'],
-    };
-  },
-  computed: {
-    ...mapState(['nowPlaying', 'mostPopular', 'topRated']),
-  },
-  mounted() {
-    this.$store.dispatch('fetchNowPlaying');
-    this.$store.dispatch('fetchMostPopular');
-    this.$store.dispatch('fetchTopRated');
-  },
-  components: {
-    CategoryCard,
-  },
-};
+const store = useMoviesStore();
+const { nowPlaying, mostPopular, topRated } = storeToRefs(store);
+
+const categories = computed(() => [
+  { title: 'Now Playing', movies: nowPlaying.value },
+  { title: 'Most Popular', movies: mostPopular.value },
+  { title: 'Top Rated', movies: topRated.value },
+]);
+
+onMounted(async () => {
+  await Promise.all([store.fetchNowPlaying(), store.fetchMostPopular(), store.fetchTopRated()]);
+});
 </script>
-
-<style lang="scss" scoped>
-.min-height {
-  min-height: calc(100vh - 132px);
-
-  &-content {
-    min-height: calc(100vh - 387px);
-  }
-}
-</style>

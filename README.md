@@ -1,44 +1,38 @@
-# Hey it's movie-search-engine! 🖖🏼
+# movie-search-engine
 
-![GitHub package.json version](https://img.shields.io/github/package-json/v/teziovsky/movie-search-engine) [![GitHub](https://img.shields.io/github/license/teziovsky/movie-search-engine)](https://choosealicense.com/licenses/mit/) [![Twitter Follow](https://img.shields.io/twitter/follow/teziovsky?style=social)](https://www.twitter.com/teziovsky)
+A movie search engine that retrieves information from The Movie DB API.
 
-> A movie search engine that retrieves information from The Movie DB API. It allows you to view the details of a specific movie and sort the list according to specific criteria.
+## Tech stack
 
-## Demo 👀
-#### [🏠 Link to demo here!](https://teziovsky.github.io/movie-search-engine/)
+- Vue 3 + Vite
+- TypeScript
+- Pinia
+- Vue Router
+- Tailwind CSS
 
-## Get started 🏁
+## Setup
 
-Clone the project and go to the project directory
-
-```bash
-  git clone git@github.com:teziovsky/movie-search-engine.git && cd movie-search-engine
-```
-
-Install dependencies
+1. Install dependencies:
 
 ```bash
-  npm install
+npm install
 ```
 
-Start the application!
+2. Create env file (already included in this repository):
 
 ```bash
-  npm run serve
+cp .env.example .env
 ```
 
-## Author 🙎🏼‍
+3. Run locally:
 
-#### [@teziovsky](https://www.github.com/teziovsky)
+```bash
+npm run dev
+```
 
-## Contact ☎️
+## Scripts
 
-If you have any suggestions, please [email me here](mailto:kontakt@jakubsoboczynski.pl)! 🔥
-
-## License 🧾
-
-#### [MIT License](https://choosealicense.com/licenses/mit/)
-
----
-
-README created with ❤️ by [md-generate](https://www.npmjs.com/package/md-generate)
+- `npm run dev` - start Vite dev server
+- `npm run build` - type-check and build production bundle
+- `npm run preview` - preview production build
+- `npm run type-check` - run TypeScript checks

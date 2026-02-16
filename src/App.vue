@@ -1,35 +1,16 @@
 <template>
-  <div id="app">
+  <div class="app-shell flex min-h-screen flex-col">
     <Navbar />
-    <transition appear mode="out-in" name="fade">
-      <router-view />
-    </transition>
+    <main class="flex-1">
+      <transition appear mode="out-in" name="fade">
+        <router-view />
+      </transition>
+    </main>
     <Footer />
   </div>
 </template>
 
-<script>
-import Navbar from './components/Navbar.vue';
-import Footer from './components/Footer.vue';
-
-export default {
-  name: 'App',
-  components: {
-    Navbar,
-    Footer,
-  },
-};
+<script setup lang="ts">
+import Footer from '@/components/Footer.vue';
+import Navbar from '@/components/Navbar.vue';
 </script>
-
-<style lang="scss">
-.fade-enter-active,
-.fade-leave-active {
-  transition: opacity 0.25s ease-in-out;
-  opacity: 0;
-}
-
-.fade-enter,
-.fade-leave-active {
-  opacity: 0;
-}
-</style>

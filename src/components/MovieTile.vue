@@ -1,77 +1,53 @@
 <template>
-  <router-link :to="'/movie/' + movie.id" class="card">
-    <div class="row no-gutters">
-      <div class="col">
-        <img
-          :alt="movie.title + ' poster picture'"
-          :src="'http://image.tmdb.org/t/p/w500/' + movie.poster_path"
-          class="card-img img-height"
-          @error="defaultImg"
-        />
+  <router-link
+    :to="`/movie/${movie.id}`"
+    class="group flex h-full min-h-[208px] w-full overflow-hidden rounded-2xl border border-slate-200/80 bg-white/85 shadow-[0_18px_35px_rgba(42,63,103,0.13)] transition duration-200 hover:-translate-y-1.5 hover:shadow-[0_24px_42px_rgba(42,63,103,0.2)]"
+  >
+    <div class="w-[45%]">
+      <img
+        :alt="`${movie.title} poster picture`"
+        :src="posterUrl"
+        class="h-full w-full object-cover"
+        @error="defaultImg"
+      />
+    </div>
+    <div class="flex w-[55%] flex-col justify-between p-4">
+      <div>
+        <p class="chip mb-2 w-fit px-2 py-1 text-[10px]">TMDB</p>
+        <h6
+          class="line-clamp-2 text-base font-bold leading-tight text-slate-900"
+        >
+          {{ movie.title }}
+        </h6>
       </div>
-      <div class="col">
-        <div class="h-100 card-body d-flex flex-column justify-content-between align-items-center p-3">
-          <h6 class="mt-1 card-title">{{ movie.title }}</h6>
-          <div>
-            <p class="card-text m-0">
-              <small>Popularity: {{ movie.popularity }}</small>
-            </p>
-            <p class="card-text m-0">
-              <small>Votes: {{ movie.vote_count }}</small>
-            </p>
-          </div>
-        </div>
+      <div class="mt-4 space-y-1 text-xs font-medium text-slate-600">
+        <p>Popularity: {{ movie.popularity }}</p>
+        <p>Votes: {{ movie.vote_count }}</p>
+        <p v-if="movie.release_date">Release: {{ movie.release_date }}</p>
       </div>
     </div>
   </router-link>
 </template>
-<script>
-export default {
-  props: ['movie'],
-  name: 'MovieTile',
-  data() {
-    return {
-      defaultImage: require('@/assets/no-img.jpg'),
-    };
-  },
-  methods: {
-    defaultImg(e) {
-      e.target.src = this.defaultImage;
-    },
-  },
+
+<script setup lang="ts">
+import { computed } from 'vue';
+import noImg from '@/assets/no-img.jpg';
+import type { Movie } from '@/types/movie';
+
+const props = defineProps<{
+  movie: Movie;
+}>();
+
+const posterUrl = computed(() => {
+  if (!props.movie.poster_path) {
+    return noImg;
+  }
+
+  return `https://image.tmdb.org/t/p/w500/${props.movie.poster_path}`;
+});
+
+const defaultImg = (event: Event) => {
+  const target = event.target as HTMLImageElement;
+  target.src = noImg;
 };
 </script>
-<style lang="scss" scoped>
-a {
-  transition: transform 0.25s ease;
-  text-decoration: none;
-  color: #212529;
-
-  &:hover {
-    transform: scale(1.1);
-    border: 1px solid rgba($color: #000000, $alpha: 0.4);
-
-    & .title {
-      text-shadow: 0.5px 0 0 rgba($color: #000000, $alpha: 0.7);
-    }
-  }
-}
-
-.card {
-  width: 300px;
-  margin: 10px;
-}
-
-.img-height {
-  width: inherit;
-  height: 100%;
-  object-fit: cover;
-  object-position: center;
-}
-
-@media only screen and (max-width: 768px) {
-  .card {
-    width: 85vw;
-  }
-}
-</style>
