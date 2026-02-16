@@ -1,7 +1,7 @@
 <template>
   <router-link
-    :to="`/movie/${movie.id}`"
-    class="group flex h-full min-h-[208px] w-full overflow-hidden rounded-2xl border border-slate-200/80 bg-white/85 shadow-[0_18px_35px_rgba(42,63,103,0.13)] transition duration-200 hover:-translate-y-1.5 hover:shadow-[0_24px_42px_rgba(42,63,103,0.2)]"
+    :to="`/movie-search-engine/movie/${movie.id}`"
+    class="group flex h-full min-h-52 w-full overflow-hidden rounded-2xl border border-slate-200/80 bg-white/85 shadow-[0_18px_35px_rgba(42,63,103,0.13)] transition duration-200 hover:-translate-y-1.5 hover:shadow-[0_24px_42px_rgba(42,63,103,0.2)]"
   >
     <div class="w-[45%]">
       <img
@@ -30,9 +30,9 @@
 </template>
 
 <script setup lang="ts">
-import { computed } from 'vue';
-import noImg from '@/assets/no-img.jpg';
-import type { Movie } from '@/types/movie';
+import noImg from "@/assets/no-img.jpg";
+import type { Movie } from "@/types/movie";
+import { computed } from "vue";
 
 const props = defineProps<{
   movie: Movie;

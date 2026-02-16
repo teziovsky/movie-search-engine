@@ -1,28 +1,28 @@
-import { createRouter, createWebHistory } from 'vue-router';
-import Home from '@/views/Home.vue';
+import Home from "@/views/Home.vue";
+import { createRouter, createWebHistory } from "vue-router";
 
 const router = createRouter({
   history: createWebHistory(),
-  linkExactActiveClass: 'is-active',
+  linkExactActiveClass: "is-active",
   routes: [
     {
-      path: '/',
-      name: 'Home',
+      path: "/movie-search-engine/",
+      name: "Home",
       component: Home,
     },
     {
-      path: '/movies',
-      name: 'Movies',
-      component: () => import('@/views/Movies.vue'),
+      path: "/movie-search-engine/movies",
+      name: "Movies",
+      component: () => import("@/views/Movies.vue"),
     },
     {
-      path: '/search',
-      redirect: '/movies',
+      path: "/movie-search-engine/search",
+      redirect: { name: "Movies" },
     },
     {
-      path: '/movie/:id',
-      name: 'Movie',
-      component: () => import('@/views/MovieDetails.vue'),
+      path: "/movie-search-engine/movie/:id",
+      name: "Movie",
+      component: () => import("@/views/MovieDetails.vue"),
     },
   ],
 });
