@@ -1,6 +1,7 @@
 {
   "name": "movie-search-engine",
   "version": "1.0.0",
+  "private": true,
   "description": "A movie search engine that retrieves information from The Movie DB API. It allows you to view the details of a specific movie and sort the list according to specific criteria. Project created for the recruitment for the position of Frontend Developer.",
   "homepage": "https://teziovsky.github.io/movie-search-engine/",
   "repository": {
@@ -8,8 +9,8 @@
     "url": "git@github.com:teziovsky/movie-search-engine.git"
   },
   "engines": {
-    "node": ">=v12.0.0",
-    "npm": ">=v6.0.0"
+    "node": ">=23.0.0",
+    "npm": ">=10.0.0"
   },
   "bugs": {
     "url": "https://github.com/teziovsky/movie-search-engine/issues",
@@ -22,24 +23,24 @@
     "url": "https://www.jakubsoboczynski.pl"
   },
   "scripts": {
-    "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build",
-    "lint": "vue-cli-service lint"
+    "dev": "vite",
+    "build": "vue-tsc --noEmit && vite build",
+    "preview": "vite preview",
+    "type-check": "vue-tsc --noEmit"
   },
   "dependencies": {
-    "axios": "^0.26.1",
-    "core-js": "^3.21.1",
-    "vue": "^2.6.14",
-    "vue-router": "^3.5.3",
-    "vuex": "^3.6.2"
+    "axios": "^1.13.5",
+    "pinia": "^2.3.1",
+    "vue": "^3.5.28",
+    "vue-router": "^4.5.1"
   },
   "devDependencies": {
-    "@vue/cli-plugin-babel": "~4.4.0",
-    "@vue/cli-plugin-router": "~4.4.0",
-    "@vue/cli-service": "~4.4.0",
-    "sass": "^1.65.1",
-    "sass-loader": "^8.0.2",
-    "vue-template-compiler": "^2.6.14"
+    "@tailwindcss/vite": "^4.1.13",
+    "@vitejs/plugin-vue": "^5.2.4",
+    "tailwindcss": "^4.1.13",
+    "typescript": "^5.9.3",
+    "vite": "^5.4.20",
+    "vue-tsc": "^2.2.12"
   },
   "browserslist": [
     "> 1%",
