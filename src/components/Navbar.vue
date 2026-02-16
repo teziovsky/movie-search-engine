@@ -1,6 +1,10 @@
 <template>
-  <header class="site-header sticky top-0 z-30 border-b border-white/40 bg-white/65 backdrop-blur-xl">
-    <nav class="mx-auto flex w-full max-w-[1180px] items-center justify-between px-4 py-3 md:px-6">
+  <header
+    class="site-header sticky top-0 z-30 border-b border-white/40 bg-white/65 backdrop-blur-xl"
+  >
+    <nav
+      class="mx-auto flex w-full max-w-[1180px] items-center justify-between px-4 py-3 md:px-6"
+    >
       <a
         class="rounded-full border border-white/50 bg-white/70 px-3 py-1.5 text-sm font-extrabold tracking-[0.2em] text-slate-800 transition hover:-translate-y-0.5"
         href="https://github.com/teziovsky/movie-search-engine"
@@ -11,8 +15,12 @@
       </a>
 
       <div class="flex items-center gap-2 md:hidden">
-        <button class="action-btn px-3 py-2 text-[11px]" type="button" @click="toggleTheme">
-          {{ theme === 'dark' ? 'Light' : 'Dark' }}
+        <button
+          class="action-btn px-3 py-2 text-[11px]"
+          type="button"
+          @click="toggleTheme"
+        >
+          {{ theme === "dark" ? "Light" : "Dark" }}
         </button>
         <button
           :aria-expanded="mobileOpen"
@@ -28,25 +36,47 @@
       <div class="hidden items-center gap-3 md:flex">
         <ul class="flex items-center gap-2 text-sm font-semibold">
           <li>
-            <router-link class="nav-link" to="/">Discover</router-link>
+            <router-link class="nav-link" to="/movie-search-engine/"
+              >Discover</router-link
+            >
           </li>
           <li>
-            <router-link class="nav-link" to="/movies">Movies</router-link>
+            <router-link class="nav-link" to="/movie-search-engine/movies"
+              >Movies</router-link
+            >
           </li>
         </ul>
-        <button class="action-btn px-3 py-2 text-[11px]" type="button" @click="toggleTheme">
-          {{ theme === 'dark' ? 'Light mode' : 'Dark mode' }}
+        <button
+          class="action-btn px-3 py-2 text-[11px]"
+          type="button"
+          @click="toggleTheme"
+        >
+          {{ theme === "dark" ? "Light mode" : "Dark mode" }}
         </button>
       </div>
     </nav>
 
-    <div v-if="mobileOpen" id="main-nav" class="border-t border-white/60 bg-white/85 px-4 py-3 md:hidden">
+    <div
+      v-if="mobileOpen"
+      id="main-nav"
+      class="border-t border-white/60 bg-white/85 px-4 py-3 md:hidden"
+    >
       <ul class="space-y-2 text-sm font-semibold">
         <li>
-          <router-link class="mobile-nav-link" to="/" @click="mobileOpen = false">Discover</router-link>
+          <router-link
+            class="mobile-nav-link"
+            to="/movie-search-engine/"
+            @click="mobileOpen = false"
+            >Discover</router-link
+          >
         </li>
         <li>
-          <router-link class="mobile-nav-link" to="/movies" @click="mobileOpen = false">Movies</router-link>
+          <router-link
+            class="mobile-nav-link"
+            to="/movie-search-engine/movies"
+            @click="mobileOpen = false"
+            >Movies</router-link
+          >
         </li>
       </ul>
     </div>
@@ -54,32 +84,32 @@
 </template>
 
 <script setup lang="ts">
-import { onMounted, ref } from 'vue';
+import { onMounted, ref } from "vue";
 
-type Theme = 'light' | 'dark';
+type Theme = "light" | "dark";
 
 const mobileOpen = ref(false);
-const theme = ref<Theme>('light');
+const theme = ref<Theme>("light");
 
 const applyTheme = (nextTheme: Theme) => {
   theme.value = nextTheme;
-  document.documentElement.classList.toggle('theme-dark', nextTheme === 'dark');
-  localStorage.setItem('cinegloss-theme', nextTheme);
+  document.documentElement.classList.toggle("theme-dark", nextTheme === "dark");
+  localStorage.setItem("cinegloss-theme", nextTheme);
 };
 
 const toggleTheme = () => {
-  applyTheme(theme.value === 'dark' ? 'light' : 'dark');
+  applyTheme(theme.value === "dark" ? "light" : "dark");
 };
 
 onMounted(() => {
-  const storedTheme = localStorage.getItem('cinegloss-theme');
-  if (storedTheme === 'dark' || storedTheme === 'light') {
+  const storedTheme = localStorage.getItem("cinegloss-theme");
+  if (storedTheme === "dark" || storedTheme === "light") {
     applyTheme(storedTheme);
     return;
   }
 
-  const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-  applyTheme(prefersDark ? 'dark' : 'light');
+  const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+  applyTheme(prefersDark ? "dark" : "light");
 });
 </script>
 
@@ -89,7 +119,10 @@ onMounted(() => {
   border-radius: 9999px;
   display: inline-flex;
   padding: 0.52rem 0.9rem;
-  transition: border-color 0.2s ease, background-color 0.2s ease, color 0.2s ease;
+  transition:
+    border-color 0.2s ease,
+    background-color 0.2s ease,
+    color 0.2s ease;
 }
 
 .nav-link:hover {
