@@ -36,12 +36,12 @@
       <div class="hidden items-center gap-3 md:flex">
         <ul class="flex items-center gap-2 text-sm font-semibold">
           <li>
-            <router-link class="nav-link" to="/movie-search-engine/"
+            <router-link class="nav-link" :to="{ name: 'Home' }"
               >Discover</router-link
             >
           </li>
           <li>
-            <router-link class="nav-link" to="/movie-search-engine/movies"
+            <router-link class="nav-link" :to="{ name: 'Movies' }"
               >Movies</router-link
             >
           </li>
@@ -65,7 +65,7 @@
         <li>
           <router-link
             class="mobile-nav-link"
-            to="/movie-search-engine/"
+            :to="{ name: 'Home' }"
             @click="mobileOpen = false"
             >Discover</router-link
           >
@@ -73,7 +73,7 @@
         <li>
           <router-link
             class="mobile-nav-link"
-            to="/movie-search-engine/movies"
+            :to="{ name: 'Movies' }"
             @click="mobileOpen = false"
             >Movies</router-link
           >

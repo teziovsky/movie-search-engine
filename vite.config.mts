@@ -4,7 +4,6 @@ import { fileURLToPath, URL } from "node:url";
 import { defineConfig } from "vite";
 
 export default defineConfig({
-  base: "/movie-search-engine/",
   plugins: [vue(), tailwindcss()],
   resolve: {
     alias: {
