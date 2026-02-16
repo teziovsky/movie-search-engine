@@ -3,7 +3,6 @@
   "version": "1.0.0",
   "private": true,
   "description": "A movie search engine that retrieves information from The Movie DB API. It allows you to view the details of a specific movie and sort the list according to specific criteria. Project created for the recruitment for the position of Frontend Developer.",
-  "homepage": "https://teziovsky.github.io/movie-search-engine/",
   "repository": {
     "type": "git",
     "url": "git@github.com:teziovsky/movie-search-engine.git"

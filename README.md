@@ -36,3 +36,12 @@ npm run dev
 - `npm run build` - type-check and build production bundle
 - `npm run preview` - preview production build
 - `npm run type-check` - run TypeScript checks
+
+## Deploy to Vercel
+
+1. Import this repository into Vercel.
+2. Keep the default framework preset (`Vite`) and build settings.
+3. Add environment variable `VITE_TMDB_API_KEY` in the Vercel project settings.
+4. Deploy.
+
+`vercel.json` includes a SPA rewrite so Vue Router history routes (for example `/movies` and `/movie/:id`) resolve correctly.
