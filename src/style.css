@@ -9,6 +9,8 @@
   --stroke: rgba(116, 143, 196, 0.28);
   --brand: #235dff;
   --brand-soft: rgba(35, 93, 255, 0.14);
+  --focus-ring: #1d4ed8;
+  --focus-halo: rgba(29, 78, 216, 0.28);
 }
 
 html.theme-dark {
@@ -19,6 +21,8 @@ html.theme-dark {
   --stroke: rgba(114, 139, 191, 0.34);
   --brand: #85a8ff;
   --brand-soft: rgba(133, 168, 255, 0.2);
+  --focus-ring: #a9c1ff;
+  --focus-halo: rgba(133, 168, 255, 0.4);
 }
 
 @layer base {
@@ -53,6 +57,11 @@ html.theme-dark {
   a {
     color: inherit;
     text-decoration: none;
+  }
+
+  :focus-visible {
+    outline: 3px solid var(--focus-ring);
+    outline-offset: 2px;
   }
 
   h1,
@@ -205,6 +214,11 @@ html.theme-dark {
     box-shadow: 0 0 0 4px rgba(35, 93, 255, 0.18);
   }
 
+  .field:focus-visible {
+    border-color: var(--focus-ring);
+    box-shadow: 0 0 0 4px var(--focus-halo);
+  }
+
   html.theme-dark .field {
     border-color: rgba(97, 126, 184, 0.48);
     background: rgba(17, 25, 46, 0.84);
@@ -230,6 +244,12 @@ html.theme-dark {
     box-shadow: 0 12px 24px rgba(52, 73, 118, 0.2);
   }
 
+  .action-btn:focus-visible {
+    outline: 3px solid var(--focus-ring);
+    outline-offset: 2px;
+    border-color: var(--focus-ring);
+  }
+
   .action-btn:disabled {
     opacity: 0.45;
     cursor: not-allowed;
@@ -245,6 +265,42 @@ html.theme-dark {
   html.theme-dark .action-btn:hover:enabled {
     border-color: rgba(132, 168, 255, 0.62);
     box-shadow: 0 14px 30px rgba(0, 0, 0, 0.4);
+  }
+
+
+  .interactive-card {
+    transition:
+      transform 0.2s ease,
+      box-shadow 0.2s ease,
+      border-color 0.2s ease;
+  }
+
+  .interactive-card:hover,
+  .interactive-card:focus-visible {
+    border-color: rgba(35, 93, 255, 0.55);
+    box-shadow: 0 0 0 3px var(--focus-halo), 0 24px 42px rgba(42, 63, 103, 0.2);
+    transform: translateY(-4px);
+  }
+
+  html.theme-dark .interactive-card:hover,
+  html.theme-dark .interactive-card:focus-visible {
+    border-color: rgba(132, 168, 255, 0.72);
+    box-shadow: 0 0 0 3px var(--focus-halo), 0 24px 44px rgba(0, 0, 0, 0.45);
+  }
+
+  .inline-link {
+    border-radius: 0.45rem;
+    text-underline-offset: 0.15em;
+    text-decoration-thickness: 0.08em;
+    transition: color 0.2s ease;
+  }
+
+  .inline-link:hover {
+    color: #1d4ed8;
+  }
+
+  html.theme-dark .inline-link:hover {
+    color: #bfd2ff;
   }
 
   .fade-enter-active,

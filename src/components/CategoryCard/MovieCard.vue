@@ -1,7 +1,7 @@
 <template>
   <router-link
     :to="{ name: 'Movie', params: { id: movie.id } }"
-    class="group w-[62vw] min-w-47 max-w-54.5 shrink-0 snap-start overflow-hidden rounded-2xl border border-slate-200/80 bg-white/80 shadow-[0_10px_18px_rgba(41,63,109,0.12)] transition duration-200 hover:-translate-y-1 hover:shadow-[0_18px_34px_rgba(41,63,109,0.18)] sm:w-36.5 sm:min-w-36.5 sm:max-w-36.5 md:w-39 md:min-w-39 md:max-w-39"
+    class="interactive-card group w-[62vw] min-w-47 max-w-54.5 shrink-0 snap-start overflow-hidden rounded-2xl border border-slate-200/80 bg-white/80 shadow-[0_10px_18px_rgba(41,63,109,0.12)] sm:w-36.5 sm:min-w-36.5 sm:max-w-36.5 md:w-39 md:min-w-39 md:max-w-39"
   >
     <div class="aspect-2/3 w-full">
       <img

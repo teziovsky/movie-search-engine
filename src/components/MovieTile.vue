@@ -1,7 +1,7 @@
 <template>
   <router-link
     :to="{ name: 'Movie', params: { id: movie.id } }"
-    class="group flex h-full min-h-52 w-full overflow-hidden rounded-2xl border border-slate-200/80 bg-white/85 shadow-[0_18px_35px_rgba(42,63,103,0.13)] transition duration-200 hover:-translate-y-1.5 hover:shadow-[0_24px_42px_rgba(42,63,103,0.2)]"
+    class="interactive-card group flex h-full min-h-52 w-full overflow-hidden rounded-2xl border border-slate-200/80 bg-white/85 shadow-[0_18px_35px_rgba(42,63,103,0.13)]"
   >
     <div class="w-[45%]">
       <img

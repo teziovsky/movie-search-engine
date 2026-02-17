@@ -11,12 +11,12 @@
       <input
         v-model.lazy="message"
         aria-label="Search movies"
-        class="w-full rounded-md border border-slate-300 bg-white px-3 py-2 text-sm outline-none transition focus:border-slate-500"
+        class="field"
         placeholder="Search"
         type="search"
       />
       <button
-        class="rounded-md border border-slate-900 bg-slate-900 px-4 py-2 text-sm font-medium text-white transition hover:bg-slate-700"
+        class="action-btn px-4 py-2 text-sm"
         type="submit"
       >
         Search
