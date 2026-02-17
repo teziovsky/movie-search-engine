@@ -4,7 +4,7 @@
   >
     Crafted for movie lovers by
     <a
-      class="font-bold text-slate-800 transition hover:text-blue-700"
+      class="inline-link font-bold text-slate-800"
       href="https://linkedin.com/in/jakubsoboczynski/"
       rel="noopener noreferrer"
       target="_blank"

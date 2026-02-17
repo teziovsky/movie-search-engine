@@ -6,7 +6,7 @@
       class="mx-auto flex w-full max-w-[1180px] items-center justify-between px-4 py-3 md:px-6"
     >
       <a
-        class="rounded-full border border-white/50 bg-white/70 px-3 py-1.5 text-sm font-extrabold tracking-[0.2em] text-slate-800 transition hover:-translate-y-0.5"
+        class="brand-link rounded-full border border-white/50 bg-white/70 px-3 py-1.5 text-sm font-extrabold tracking-[0.2em] text-slate-800 transition hover:-translate-y-0.5"
         href="https://github.com/teziovsky/movie-search-engine"
         rel="noopener noreferrer"
         target="_blank"
@@ -24,6 +24,7 @@
         </button>
         <button
           :aria-expanded="mobileOpen"
+          :aria-label="mobileOpen ? 'Close menu' : 'Open menu'"
           aria-controls="main-nav"
           class="action-btn px-3 py-2"
           type="button"
@@ -36,12 +37,12 @@
       <div class="hidden items-center gap-3 md:flex">
         <ul class="flex items-center gap-2 text-sm font-semibold">
           <li>
-            <router-link class="nav-link" :to="{ name: 'Home' }"
+            <router-link class="nav-link" exact-active-class="is-active" :to="{ name: 'Home' }"
               >Discover</router-link
             >
           </li>
           <li>
-            <router-link class="nav-link" :to="{ name: 'Movies' }"
+            <router-link class="nav-link" exact-active-class="is-active" :to="{ name: 'Movies' }"
               >Movies</router-link
             >
           </li>
@@ -65,6 +66,7 @@
         <li>
           <router-link
             class="mobile-nav-link"
+            exact-active-class="is-active"
             :to="{ name: 'Home' }"
             @click="mobileOpen = false"
             >Discover</router-link
@@ -73,6 +75,7 @@
         <li>
           <router-link
             class="mobile-nav-link"
+            exact-active-class="is-active"
             :to="{ name: 'Movies' }"
             @click="mobileOpen = false"
             >Movies</router-link
@@ -125,9 +128,10 @@ onMounted(() => {
     color 0.2s ease;
 }
 
-.nav-link:hover {
-  background: rgba(255, 255, 255, 0.75);
-  border-color: rgba(109, 137, 187, 0.28);
+.nav-link:hover,
+.nav-link:focus-visible {
+  background: rgba(255, 255, 255, 0.92);
+  border-color: rgba(70, 104, 170, 0.62);
 }
 
 .nav-link.is-active {
@@ -139,9 +143,16 @@ onMounted(() => {
 .mobile-nav-link {
   border: 1px solid rgba(117, 141, 183, 0.26);
   border-radius: 0.8rem;
-  background: rgba(255, 255, 255, 0.8);
+  background: rgba(255, 255, 255, 0.86);
   display: block;
   padding: 0.58rem 0.8rem;
+  transition: border-color 0.2s ease, background-color 0.2s ease, color 0.2s ease;
+}
+
+.mobile-nav-link:hover,
+.mobile-nav-link:focus-visible {
+  border-color: rgba(70, 104, 170, 0.62);
+  background: rgba(255, 255, 255, 0.95);
 }
 
 .mobile-nav-link.is-active {
@@ -150,13 +161,33 @@ onMounted(() => {
   color: #2244ad;
 }
 
+
+.brand-link:hover,
+.brand-link:focus-visible {
+  border-color: rgba(70, 104, 170, 0.64);
+  background: rgba(255, 255, 255, 0.95);
+}
+
+:global(html.theme-dark) .brand-link {
+  border-color: rgba(99, 126, 185, 0.45);
+  background: rgba(24, 35, 61, 0.92);
+  color: #e4edff;
+}
+
+:global(html.theme-dark) .brand-link:hover,
+:global(html.theme-dark) .brand-link:focus-visible {
+  border-color: rgba(159, 188, 255, 0.8);
+  background: rgba(31, 45, 78, 0.96);
+}
+
 :global(html.theme-dark) .nav-link {
   color: #d6e2ff;
 }
 
-:global(html.theme-dark) .nav-link:hover {
-  background: rgba(34, 48, 79, 0.86);
-  border-color: rgba(109, 141, 204, 0.4);
+:global(html.theme-dark) .nav-link:hover,
+:global(html.theme-dark) .nav-link:focus-visible {
+  background: rgba(34, 48, 79, 0.95);
+  border-color: rgba(159, 188, 255, 0.76);
 }
 
 :global(html.theme-dark) .nav-link.is-active {
@@ -167,8 +198,14 @@ onMounted(() => {
 
 :global(html.theme-dark) .mobile-nav-link {
   border-color: rgba(99, 126, 185, 0.45);
-  background: rgba(24, 35, 61, 0.9);
+  background: rgba(24, 35, 61, 0.92);
   color: #d6e2ff;
+}
+
+:global(html.theme-dark) .mobile-nav-link:hover,
+:global(html.theme-dark) .mobile-nav-link:focus-visible {
+  border-color: rgba(159, 188, 255, 0.8);
+  background: rgba(31, 45, 78, 0.96);
 }
 
 :global(html.theme-dark) .mobile-nav-link.is-active {
