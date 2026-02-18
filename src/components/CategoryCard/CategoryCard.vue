@@ -5,7 +5,7 @@
       <span class="chip">Top Picks</span>
     </div>
     <div class="px-4 py-4 md:px-5 md:py-5">
-      <div class="movie-lane flex snap-x snap-mandatory flex-nowrap gap-3 overflow-x-auto pb-2 pr-4">
+      <div class="movie-lane flex snap-x snap-mandatory flex-nowrap gap-3 overflow-x-auto pr-4 pb-2">
         <MovieCard v-for="movie in category" :key="movie.id" :movie="movie" />
       </div>
     </div>
@@ -13,8 +13,8 @@
 </template>
 
 <script setup lang="ts">
-import MovieCard from '@/components/CategoryCard/MovieCard.vue';
-import type { Movie } from '@/types/movie';
+import MovieCard from "@/components/CategoryCard/MovieCard.vue";
+import type { Movie } from "@/types/movie";
 
 defineProps<{
   title: string;

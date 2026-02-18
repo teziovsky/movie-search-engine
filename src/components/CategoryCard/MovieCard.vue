@@ -1,7 +1,7 @@
 <template>
   <router-link
     :to="{ name: 'Movie', params: { id: movie.id } }"
-    class="interactive-card group w-[62vw] min-w-47 max-w-54.5 shrink-0 snap-start overflow-hidden rounded-2xl border border-slate-200/80 bg-white/80 shadow-[0_10px_18px_rgba(41,63,109,0.12)] sm:w-36.5 sm:min-w-36.5 sm:max-w-36.5 md:w-39 md:min-w-39 md:max-w-39"
+    class="interactive-card group w-[62vw] max-w-54.5 min-w-47 shrink-0 snap-start overflow-hidden rounded-2xl border border-slate-200/80 bg-white/80 shadow-[0_10px_18px_rgba(41,63,109,0.12)] sm:w-36.5 sm:max-w-36.5 sm:min-w-36.5 md:w-39 md:max-w-39 md:min-w-39"
   >
     <div class="aspect-2/3 w-full">
       <img
@@ -12,9 +12,7 @@
       />
     </div>
     <div class="flex min-h-15.5 items-center justify-center px-2 py-2">
-      <p
-        class="line-clamp-2 text-center text-xs font-semibold leading-tight text-slate-800"
-      >
+      <p class="line-clamp-2 text-center text-xs leading-tight font-semibold text-slate-800">
         {{ movie.title }}
       </p>
     </div>

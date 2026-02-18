@@ -44,4 +44,5 @@ npm run dev
 3. Add environment variable `VITE_TMDB_API_KEY` in the Vercel project settings.
 4. Deploy.
 
-`vercel.json` includes a SPA rewrite so Vue Router history routes (for example `/movies` and `/movie/:id`) resolve correctly.
+`vercel.json` includes a SPA rewrite so Vue Router history routes (for example `/movies` and `/movie/:id`) resolve
+correctly.

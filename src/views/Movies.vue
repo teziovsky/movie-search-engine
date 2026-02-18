@@ -3,18 +3,13 @@
     <div class="page-heading">
       <span class="chip">Explore</span>
       <h1 class="page-title mt-3">Movie catalog</h1>
-      <p class="page-subtitle">
-        Search instantly with debounce or browse by TMDB sorting.
-      </p>
+      <p class="page-subtitle">Search instantly with debounce or browse by TMDB sorting.</p>
     </div>
 
     <div class="glass-panel mt-5 p-4 md:p-5">
       <div class="grid gap-3 md:grid-cols-[1fr_auto]">
         <label class="block">
-          <span
-            class="mb-2 block text-xs font-bold uppercase tracking-[0.08em] text-slate-600"
-            >Search movies</span
-          >
+          <span class="mb-2 block text-xs font-bold tracking-[0.08em] text-slate-600 uppercase">Search movies</span>
           <input
             v-model="searchInput"
             aria-label="Search movies"
@@ -25,16 +20,10 @@
         </label>
 
         <label class="block md:min-w-[250px]">
-          <span
-            class="mb-2 block text-xs font-bold uppercase tracking-[0.08em] text-slate-600"
+          <span class="mb-2 block text-xs font-bold tracking-[0.08em] text-slate-600 uppercase"
             >Sort discover mode</span
           >
-          <select
-            id="sort-select"
-            v-model="sortByModel"
-            :disabled="isSearchMode"
-            class="field disabled:opacity-60"
-          >
+          <select id="sort-select" v-model="sortByModel" :disabled="isSearchMode" class="field disabled:opacity-60">
             <option value="popularity.desc">Popularity ↓</option>
             <option value="popularity.asc">Popularity ↑</option>
             <option value="original_title.desc">Original title ↓</option>
@@ -48,12 +37,8 @@
       </div>
 
       <p class="mt-3 text-xs font-medium text-slate-600">
-        <span v-if="isSearchMode"
-          >Showing search results for "{{ debouncedQuery }}".</span
-        >
-        <span v-else
-          >Browsing discover list. Sorting applies to this mode.</span
-        >
+        <span v-if="isSearchMode">Showing search results for "{{ debouncedQuery }}".</span>
+        <span v-else>Browsing discover list. Sorting applies to this mode.</span>
       </p>
     </div>
 
@@ -61,28 +46,14 @@
       v-if="showMovies.length"
       class="movies-grid mt-5 grid min-h-80 grid-cols-1 gap-4 sm:grid-cols-2 xl:grid-cols-3"
     >
-      <MovieTile
-        v-for="movie in showMovies"
-        :key="movie.id"
-        :movie="movie"
-        class="movie-grid-item"
-      />
+      <MovieTile v-for="movie in showMovies" :key="movie.id" :movie="movie" class="movie-grid-item" />
     </div>
 
-    <div
-      v-else
-      class="surface-tint mt-6 rounded-2xl p-6 text-center text-sm font-medium text-slate-700"
-    >
+    <div v-else class="surface-tint mt-6 rounded-2xl p-6 text-center text-sm font-medium text-slate-700">
       No movies found. Try another search phrase.
     </div>
 
-    <Pagination
-      v-if="showMovies.length"
-      :last-page="activeLastPage"
-      :page="page"
-      @next="nextPage"
-      @prev="prevPage"
-    />
+    <Pagination v-if="showMovies.length" :last-page="activeLastPage" :page="page" @next="nextPage" @prev="prevPage" />
   </section>
 </template>
 
@@ -94,14 +65,7 @@ import { storeToRefs } from "pinia";
 import { computed, onBeforeUnmount, onMounted, ref, watch } from "vue";
 
 const store = useMoviesStore();
-const {
-  allMovies,
-  sortBy,
-  lastPageMovies,
-  searchResults,
-  searchQuery,
-  lastPageSearch,
-} = storeToRefs(store);
+const { allMovies, sortBy, lastPageMovies, searchResults, searchQuery, lastPageSearch } = storeToRefs(store);
 
 const page = ref(1);
 const perPage = 21;
@@ -113,9 +77,7 @@ let debounceHandle: ReturnType<typeof setTimeout> | null = null;
 
 const isSearchMode = computed(() => debouncedQuery.value.length > 0);
 
-const activeMovies = computed(() =>
-  isSearchMode.value ? searchResults.value : allMovies.value,
-);
+const activeMovies = computed(() => (isSearchMode.value ? searchResults.value : allMovies.value));
 
 const toLocalPageCount = (apiPages: number | null) => {
   if (apiPages === null) {
@@ -187,7 +149,7 @@ const ensureItemsLoaded = async (targetCount: number) => {
   await ensureDiscoverItemsLoaded(targetCount);
 };
 
-watch(searchInput, (value) => {
+watch(searchInput, value => {
   if (debounceHandle) {
     clearTimeout(debounceHandle);
   }
@@ -309,9 +271,7 @@ onBeforeUnmount(() => {
     0 24px 42px rgba(0, 0, 0, 0.42);
 }
 
-:global(html.theme-dark)
-  .movies-grid
-  > .movie-grid-item:nth-child(-n + 2)::after {
+:global(html.theme-dark) .movies-grid > .movie-grid-item:nth-child(-n + 2)::after {
   border-color: rgba(132, 168, 255, 0.5);
   background: rgba(24, 36, 65, 0.9);
   color: #c8d8ff;

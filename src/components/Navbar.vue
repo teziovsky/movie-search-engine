@@ -1,10 +1,6 @@
 <template>
-  <header
-    class="site-header sticky top-0 z-30 border-b border-white/40 bg-white/65 backdrop-blur-xl"
-  >
-    <nav
-      class="mx-auto flex w-full max-w-[1180px] items-center justify-between px-4 py-3 md:px-6"
-    >
+  <header class="site-header sticky top-0 z-30 border-b border-white/40 bg-white/65 backdrop-blur-xl">
+    <nav class="mx-auto flex w-full max-w-[1180px] items-center justify-between px-4 py-3 md:px-6">
       <a
         class="brand-link rounded-full border border-white/50 bg-white/70 px-3 py-1.5 text-sm font-extrabold tracking-[0.2em] text-slate-800 transition hover:-translate-y-0.5"
         href="https://github.com/teziovsky/movie-search-engine"
@@ -15,11 +11,7 @@
       </a>
 
       <div class="flex items-center gap-2 md:hidden">
-        <button
-          class="action-btn px-3 py-2 text-[11px]"
-          type="button"
-          @click="toggleTheme"
-        >
+        <button class="action-btn px-3 py-2 text-[11px]" type="button" @click="toggleTheme">
           {{ theme === "dark" ? "Light" : "Dark" }}
         </button>
         <button
@@ -37,31 +29,19 @@
       <div class="hidden items-center gap-3 md:flex">
         <ul class="flex items-center gap-2 text-sm font-semibold">
           <li>
-            <router-link class="nav-link" exact-active-class="is-active" :to="{ name: 'Home' }"
-              >Discover</router-link
-            >
+            <router-link class="nav-link" exact-active-class="is-active" :to="{ name: 'Home' }">Discover</router-link>
           </li>
           <li>
-            <router-link class="nav-link" exact-active-class="is-active" :to="{ name: 'Movies' }"
-              >Movies</router-link
-            >
+            <router-link class="nav-link" exact-active-class="is-active" :to="{ name: 'Movies' }">Movies</router-link>
           </li>
         </ul>
-        <button
-          class="action-btn px-3 py-2 text-[11px]"
-          type="button"
-          @click="toggleTheme"
-        >
+        <button class="action-btn px-3 py-2 text-[11px]" type="button" @click="toggleTheme">
           {{ theme === "dark" ? "Light mode" : "Dark mode" }}
         </button>
       </div>
     </nav>
 
-    <div
-      v-if="mobileOpen"
-      id="main-nav"
-      class="border-t border-white/60 bg-white/85 px-4 py-3 md:hidden"
-    >
+    <div v-if="mobileOpen" id="main-nav" class="border-t border-white/60 bg-white/85 px-4 py-3 md:hidden">
       <ul class="space-y-2 text-sm font-semibold">
         <li>
           <router-link
@@ -146,7 +126,10 @@ onMounted(() => {
   background: rgba(255, 255, 255, 0.86);
   display: block;
   padding: 0.58rem 0.8rem;
-  transition: border-color 0.2s ease, background-color 0.2s ease, color 0.2s ease;
+  transition:
+    border-color 0.2s ease,
+    background-color 0.2s ease,
+    color 0.2s ease;
 }
 
 .mobile-nav-link:hover,
@@ -160,7 +143,6 @@ onMounted(() => {
   background: rgba(35, 93, 255, 0.13);
   color: #2244ad;
 }
-
 
 .brand-link:hover,
 .brand-link:focus-visible {

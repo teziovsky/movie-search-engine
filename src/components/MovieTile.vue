@@ -14,9 +14,7 @@
     <div class="flex w-[55%] flex-col justify-between p-4">
       <div>
         <p class="chip mb-2 w-fit px-2 py-1 text-[10px]">TMDB</p>
-        <h6
-          class="line-clamp-2 text-base font-bold leading-tight text-slate-900"
-        >
+        <h6 class="line-clamp-2 text-base leading-tight font-bold text-slate-900">
           {{ movie.title }}
         </h6>
       </div>
