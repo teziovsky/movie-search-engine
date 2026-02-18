@@ -4,35 +4,16 @@
       <h1 class="text-4xl font-bold tracking-tight">Search movies</h1>
     </div>
 
-    <form
-      class="mx-auto my-4 flex max-w-xl items-center justify-center gap-2"
-      @submit.prevent="search"
-    >
-      <input
-        v-model.lazy="message"
-        aria-label="Search movies"
-        class="w-full rounded-md border border-slate-300 bg-white px-3 py-2 text-sm outline-none transition focus:border-slate-500"
-        placeholder="Search"
-        type="search"
-      />
-      <button
-        class="rounded-md border border-slate-900 bg-slate-900 px-4 py-2 text-sm font-medium text-white transition hover:bg-slate-700"
-        type="submit"
-      >
-        Search
-      </button>
+    <form class="mx-auto my-4 flex max-w-xl items-center justify-center gap-2" @submit.prevent="search">
+      <input v-model.lazy="message" aria-label="Search movies" class="field" placeholder="Search" type="search" />
+      <button class="action-btn px-4 py-2 text-sm" type="submit">Search</button>
     </form>
 
     <div class="flex min-h-80 flex-wrap justify-center">
       <MovieTile v-for="movie in showMovies" :key="movie.id" :movie="movie" />
     </div>
 
-    <Pagination
-      :last-page="lastPageSearch"
-      :page="page"
-      @next="nextPage"
-      @prev="prevPage"
-    />
+    <Pagination :last-page="lastPageSearch" :page="page" @next="nextPage" @prev="prevPage" />
   </section>
 </template>
 

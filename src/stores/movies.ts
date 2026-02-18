@@ -1,30 +1,31 @@
-import axios from 'axios';
-import { defineStore } from 'pinia';
-import { ref } from 'vue';
-import type { Movie, PagedResponse } from '@/types/movie';
+import axios from "axios";
+import { defineStore } from "pinia";
+import { ref } from "vue";
+
+import type { Movie, PagedResponse } from "@/types/movie";
 
 const apiKey = import.meta.env.VITE_TMDB_API_KEY;
 
 const api = axios.create({
-  baseURL: 'https://api.themoviedb.org/3',
+  baseURL: "https://api.themoviedb.org/3",
 });
 
-export const useMoviesStore = defineStore('movies', () => {
+export const useMoviesStore = defineStore("movies", () => {
   const allMovies = ref<Movie[]>([]);
   const nowPlaying = ref<Movie[]>([]);
   const mostPopular = ref<Movie[]>([]);
   const topRated = ref<Movie[]>([]);
   const selectedMovie = ref<Movie | null>(null);
   const searchResults = ref<Movie[]>([]);
-  const sortBy = ref('popularity.desc');
+  const sortBy = ref("popularity.desc");
   const lastPageMovies = ref<number | null>(null);
   const lastPageSearch = ref<number | null>(null);
-  const searchQuery = ref('');
+  const searchQuery = ref("");
   let searchRequestId = 0;
 
   const ensureApiKey = () => {
     if (!apiKey) {
-      throw new Error('Missing VITE_TMDB_API_KEY in .env file');
+      throw new Error("Missing VITE_TMDB_API_KEY in .env file");
     }
 
     return apiKey;
@@ -32,10 +33,10 @@ export const useMoviesStore = defineStore('movies', () => {
 
   const fetchAllMovies = async (page = 1) => {
     const key = ensureApiKey();
-    const response = await api.get<PagedResponse<Movie>>('/discover/movie', {
+    const response = await api.get<PagedResponse<Movie>>("/discover/movie", {
       params: {
         api_key: key,
-        language: 'en-US',
+        language: "en-US",
         sort_by: sortBy.value,
         include_adult: false,
         include_video: false,
@@ -49,10 +50,10 @@ export const useMoviesStore = defineStore('movies', () => {
 
   const fetchNextPage = async (page: number) => {
     const key = ensureApiKey();
-    const response = await api.get<PagedResponse<Movie>>('/discover/movie', {
+    const response = await api.get<PagedResponse<Movie>>("/discover/movie", {
       params: {
         api_key: key,
-        language: 'en-US',
+        language: "en-US",
         sort_by: sortBy.value,
         include_adult: false,
         include_video: false,
@@ -65,47 +66,41 @@ export const useMoviesStore = defineStore('movies', () => {
 
   const fetchNowPlaying = async () => {
     const key = ensureApiKey();
-    const response = await api.get<PagedResponse<Movie>>('/movie/now_playing', {
+    const response = await api.get<PagedResponse<Movie>>("/movie/now_playing", {
       params: {
         api_key: key,
-        language: 'en-US',
+        language: "en-US",
         page: 1,
       },
     });
 
-    nowPlaying.value = response.data.results
-      .sort((a, b) => b.popularity - a.popularity)
-      .slice(0, 9);
+    nowPlaying.value = response.data.results.toSorted((a, b) => b.popularity - a.popularity).slice(0, 9);
   };
 
   const fetchMostPopular = async () => {
     const key = ensureApiKey();
-    const response = await api.get<PagedResponse<Movie>>('/movie/popular', {
+    const response = await api.get<PagedResponse<Movie>>("/movie/popular", {
       params: {
         api_key: key,
-        language: 'en-US',
+        language: "en-US",
         page: 1,
       },
     });
 
-    mostPopular.value = response.data.results
-      .sort((a, b) => b.popularity - a.popularity)
-      .slice(0, 9);
+    mostPopular.value = response.data.results.toSorted((a, b) => b.popularity - a.popularity).slice(0, 9);
   };
 
   const fetchTopRated = async () => {
     const key = ensureApiKey();
-    const response = await api.get<PagedResponse<Movie>>('/movie/top_rated', {
+    const response = await api.get<PagedResponse<Movie>>("/movie/top_rated", {
       params: {
         api_key: key,
-        language: 'en-US',
+        language: "en-US",
         page: 1,
       },
     });
 
-    topRated.value = response.data.results
-      .sort((a, b) => b.vote_average - a.vote_average)
-      .slice(0, 9);
+    topRated.value = response.data.results.toSorted((a, b) => b.vote_average - a.vote_average).slice(0, 9);
   };
 
   const fetchSelectedMovie = async (id: string | number) => {
@@ -113,7 +108,7 @@ export const useMoviesStore = defineStore('movies', () => {
     const response = await api.get<Movie>(`/movie/${id}`, {
       params: {
         api_key: key,
-        language: 'en-US',
+        language: "en-US",
       },
     });
 
@@ -131,10 +126,10 @@ export const useMoviesStore = defineStore('movies', () => {
     }
 
     const key = ensureApiKey();
-    const response = await api.get<PagedResponse<Movie>>('/search/movie', {
+    const response = await api.get<PagedResponse<Movie>>("/search/movie", {
       params: {
         api_key: key,
-        language: 'en-US',
+        language: "en-US",
         query,
         page: 1,
         include_adult: false,
@@ -152,10 +147,10 @@ export const useMoviesStore = defineStore('movies', () => {
   const fetchNextSearchPage = async (page: number) => {
     const key = ensureApiKey();
     const currentRequestId = searchRequestId;
-    const response = await api.get<PagedResponse<Movie>>('/search/movie', {
+    const response = await api.get<PagedResponse<Movie>>("/search/movie", {
       params: {
         api_key: key,
-        language: 'en-US',
+        language: "en-US",
         query: searchQuery.value,
         page,
         include_adult: false,

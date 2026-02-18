@@ -1,0 +1,65 @@
+{
+  "$schema": "./node_modules/oxfmt/configuration_schema.json",
+  "printWidth": 120,
+  "tabWidth": 2,
+  "useTabs": false,
+  "semi": true,
+  "singleQuote": false,
+  "trailingComma": "all",
+  "quoteProps": "as-needed",
+  "arrowParens": "avoid",
+  "bracketSpacing": true,
+  "bracketSameLine": false,
+  "singleAttributePerLine": false,
+  "htmlWhitespaceSensitivity": "css",
+  "vueIndentScriptAndStyle": false,
+  "embeddedLanguageFormatting": "auto",
+  "endOfLine": "lf",
+  "insertFinalNewline": true,
+
+  "experimentalSortImports": {
+    "internalPattern": ["@/", "~/"],
+    "newlinesBetween": true,
+    "sortSideEffects": false,
+    "partitionByComment": false,
+    "partitionByNewline": false,
+    "groups": [
+      "type-import",
+      ["value-builtin", "value-external"],
+      "type-internal",
+      "value-internal",
+      ["type-parent", "type-sibling", "type-index"],
+      ["value-parent", "value-sibling", "value-index"],
+      "unknown"
+    ]
+  },
+
+  "experimentalTailwindcss": {
+    "attributes": [":class", "v-bind:class"],
+    "functions": ["clsx", "cn", "cva", "tw", "twMerge", "twJoin"],
+    "preserveDuplicates": false,
+    "preserveWhitespace": false
+  },
+
+  "experimentalSortPackageJson": {
+    "sortScripts": true
+  },
+
+  "ignorePatterns": ["dist/**", "node_modules/**", ".git/**", ".vite/**", ".vercel/**", ".agents/**"],
+
+  "overrides": [
+    {
+      "files": ["*.md"],
+      "options": {
+        "proseWrap": "always"
+      }
+    },
+    {
+      "files": ["*.json", "*.jsonc"],
+      "options": {
+        "singleQuote": false,
+        "trailingComma": "none"
+      }
+    }
+  ]
+}

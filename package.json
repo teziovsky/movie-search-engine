@@ -3,14 +3,6 @@
   "version": "1.0.0",
   "private": true,
   "description": "A movie search engine that retrieves information from The Movie DB API. It allows you to view the details of a specific movie and sort the list according to specific criteria. Project created for the recruitment for the position of Frontend Developer.",
-  "repository": {
-    "type": "git",
-    "url": "git@github.com:teziovsky/movie-search-engine.git"
-  },
-  "engines": {
-    "node": ">=23.0.0",
-    "npm": ">=10.0.0"
-  },
   "bugs": {
     "url": "https://github.com/teziovsky/movie-search-engine/issues",
     "email": "teziovsky@gmail.com"
@@ -21,9 +13,18 @@
     "email": "kontakt@jakubsoboczynski.pl",
     "url": "https://www.jakubsoboczynski.pl"
   },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:teziovsky/movie-search-engine.git"
+  },
   "scripts": {
-    "dev": "vite",
     "build": "vite build",
+    "dev": "vite",
+    "fix": "npm run format:fix && npm run lint:fix",
+    "format": "oxfmt -c .oxfmtrc.json --check .",
+    "format:fix": "oxfmt -c .oxfmtrc.json --write .",
+    "lint": "oxlint -c .oxlintrc.json --tsconfig tsconfig.json .",
+    "lint:fix": "oxlint -c .oxlintrc.json --tsconfig tsconfig.json --fix .",
     "preview": "vite preview",
     "type-check": "vue-tsc --noEmit"
   },
@@ -36,6 +37,8 @@
   "devDependencies": {
     "@tailwindcss/vite": "^4.1.13",
     "@vitejs/plugin-vue": "^5.2.4",
+    "oxfmt": "^0.33.0",
+    "oxlint": "^1.48.0",
     "tailwindcss": "^4.1.13",
     "typescript": "^5.9.3",
     "vite": "^5.4.20",
@@ -45,5 +48,9 @@
     "> 1%",
     "last 2 versions",
     "not dead"
-  ]
+  ],
+  "engines": {
+    "node": ">=23.0.0",
+    "npm": ">=10.0.0"
+  }
 }

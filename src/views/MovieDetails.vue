@@ -11,7 +11,9 @@
         <div class="flex flex-col gap-3">
           <div>
             <span class="chip">Movie profile</span>
-            <h2 class="mt-2 text-3xl font-bold text-slate-900">{{ movie.title }}</h2>
+            <h2 class="mt-2 text-3xl font-bold text-slate-900">
+              {{ movie.title }}
+            </h2>
           </div>
 
           <p class="text-sm text-slate-600">
@@ -48,7 +50,7 @@
       <div class="border-t border-slate-200/80 px-4 py-5 md:px-6">
         <p class="text-sm leading-7 text-slate-700">
           <span class="font-bold text-slate-900">Overview:</span>
-          {{ movie.overview || 'No overview available for this title.' }}
+          {{ movie.overview || "No overview available for this title." }}
         </p>
       </div>
     </article>
@@ -58,12 +60,12 @@
 </template>
 
 <script setup lang="ts">
-import { storeToRefs } from 'pinia';
-import { computed, onMounted } from 'vue';
-import { useRoute } from 'vue-router';
-import noImg from '@/assets/no-img.jpg';
-import { useMoviesStore } from '@/stores/movies';
-import type { Genre, ProductionCountry } from '@/types/movie';
+import noImg from "@/assets/no-img.jpg";
+import { useMoviesStore } from "@/stores/movies";
+import type { Genre, ProductionCountry } from "@/types/movie";
+import { storeToRefs } from "pinia";
+import { computed, onMounted } from "vue";
+import { useRoute } from "vue-router";
 
 const route = useRoute();
 const store = useMoviesStore();
@@ -79,10 +81,10 @@ const posterUrl = computed(() => {
 
 const arrayJoin = (array?: Genre[] | ProductionCountry[]) => {
   if (!array || array.length === 0) {
-    return 'N/A';
+    return "N/A";
   }
 
-  return array.map((item) => item.name).join(', ');
+  return array.map(item => item.name).join(", ");
 };
 
 onMounted(async () => {
