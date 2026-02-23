@@ -1,0 +1,31 @@
+{
+  "$schema": "https://raw.githubusercontent.com/streetsidesoftware/cspell/main/cspell.schema.json",
+  "language": "en,pl,pl-PL",
+  "import": ["@cspell/dict-pl_pl/cspell-ext.json"],
+  "ignorePaths": ["dist/**", "node_modules/**"],
+  "words": [
+    "teziovsky",
+    "soboczyński",
+    "oxlint",
+    "oxfmt",
+    "oxlintrc",
+    "oxfmtrc",
+    "nuxi",
+    "nuxtjs",
+    "vueuse",
+    "reka",
+    "vaul",
+    "ilike",
+    "Foodbase",
+    "dbstudio",
+    "dbgenerate",
+    "dbpush",
+    "dbmigrate",
+    "embla",
+    "neondatabase",
+    "dbpull",
+    "tmdb",
+    "cinegloss",
+    "lucide"
+  ]
+}
